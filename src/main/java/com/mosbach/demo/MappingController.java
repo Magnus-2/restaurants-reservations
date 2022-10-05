@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1.0")
@@ -32,7 +34,7 @@ public class MappingController {
     @GetMapping("/task/all")
     public TaskList getTasks(@RequestParam(value = "name", defaultValue = "Student") String name) {
 
-        System.out.println("jahsjahsjha");
+
         TaskList taskList = new TaskList(
                                     new Student("me", name)
                             );
@@ -79,10 +81,42 @@ public class MappingController {
     )
     public AlexaRO getTasks(@RequestBody AlexaRO alexaRO) {
 
-        String outText = "";
+        if (alexaRO.getRequest().getType().equalsIgnoreCase("LaunchRequest")){
+            return prepareResponse(alexaRO, "Welcome to the Mosbach Task Organizer. ", false);
+        }
+
+        if(alexaRO.getRequest().getType().equalsIgnoreCase("IntentRequest")
+        &&
+        (alexaRO.getRequest().getIntent().getName().equalsIgnoreCase("TaskReadIntent"))
+        )
+
+        {
+            //ich weiß, jemand hat gesagt: Read all my tasks.
+            StringBuilder outText = new StringBuilder ("Hello. You have to do the following tasks.");
+            try {
 
 
-        return alexaRO;
+                //tasks hinzufügen
+                TaskList taskList = new TaskList(
+                        new Student("me", "me")
+                );
+                taskList.setTasks();
+                AtomicInteger i = new AtomicInteger(0);
+                taskList.getTasks().forEach(
+                        task -> {
+                            outText.append("Task number " + i.incrementAndGet() + "is:");
+                            outText.append(task.getName() + "and has priority " + task.getPriority());
+                        }
+                );
+                outText.append("Thank you for unsing your servie. ");
+            }
+            catch (Exception e){
+                outText.append("Unfortunately, we cannot reach heroku. Our REST server is not responding");
+            }
+            return prepareResponse(alexaRO,outText.toString(),true);
+        }
+            return prepareResponse(alexaRO, "We could not help you. ", true);
+
     }
 
     private AlexaRO prepareResponse(AlexaRO alexaRO, String outText, boolean shouldEndSession) {
