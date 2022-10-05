@@ -14,11 +14,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
-public class PostgresTaskManagerImpl implements TaskManager  {
+public class PostgresTaskManagerImpl implements TaskManager {
 
-    String databaseURL = "jdbc:postgresql://ec2-3-81-240-17.compute-1.amazonaws.com:5432/d9l0o5gfhlc5co";
-    String username = "wrong";
-    String password = "very_wrong";
+    String databaseURL = "jdbc:postgresql://ec2-44-209-186-51.compute-1.amazonaws.com:5432/d7dbn5vkl1366d";
+    String username = "udtdswiogeoans";
+    String password = "3b41fbe722ae0b7a403ef57e66215cb5f84a33ea7a5178890e61605eca6102a1";
     BasicDataSource basicDataSource;
 
     static PostgresTaskManagerImpl postgresTaskManager = null;
@@ -37,10 +37,41 @@ public class PostgresTaskManagerImpl implements TaskManager  {
     }
 
 
+
+
+
+
     @Override
     public Collection<Task> getAllTasks(Student student) {
 
         List<Task> tasks = new ArrayList<>();
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM tasks");
+            while (rs.next()) {
+                tasks.add(
+                        new Task(
+                                rs.getString("name"),
+                                rs.getString("description"),
+                                rs.getInt("priority")
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         return tasks;
     }
@@ -51,18 +82,62 @@ public class PostgresTaskManagerImpl implements TaskManager  {
         Statement stmt = null;
         Connection connection = null;
 
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            String udapteSQL = "INSERT into tasks (name, description, priority) VALUES (" +
+                    "'" + task.getName() + "', " +
+                    "'" + task.getDescription() + "', " +
+                    "'" + task.getPriority() + "')";
+
+            stmt.executeUpdate(udapteSQL);
+
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void createTableTask() {
 
-        // Be carefull: It deletes data if table already exists.
-        //
+
+    public void createTableTask(){
+
         Statement stmt = null;
         Connection connection = null;
 
+    try
 
+    {
+        connection = basicDataSource.getConnection();
+        stmt = connection.createStatement();
+        String dropTabel = "DROP TABLE IF EXISTS tasks";
+        stmt.executeUpdate(dropTabel);
+
+        String createTable = "CREATE TABLE tasks(" +
+                "id SERIAL PRIMARY KEY," +
+                "name varchar (100) NOT NULL," +
+                "description varchar (250) NUT NULL," +
+                "priority int NOT NULL)";
+        stmt.executeUpdate(createTable);
+
+    } catch(SQLException e){
+        e.printStackTrace();
+    }
+    try{
+        stmt.close();
+        connection.close();
+
+    }catch(SQLException e){
+        e.printStackTrace();
     }
 
-
+}
 }

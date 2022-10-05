@@ -39,15 +39,15 @@ public class TaskList {
 	}
 
 	public void setTasks() {
-		TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
-		//TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
+		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		tasks = taskManager.getAllTasks(new Student("me", "me"));
 	}
 
 	@SuppressWarnings("deprecation")
 	public void addTask(Task task) {
-		TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
-		//TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
+		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		taskManager.addTask(task, new Student("me", "me"));
 
 		// Region euCentral = Region.getRegion(Regions.US_EAST_1);
