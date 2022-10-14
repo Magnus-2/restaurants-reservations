@@ -108,36 +108,36 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
 
 
-    public void createTableTask(){
+    public void createTableTask() {
+
+        // Be carefull: It deletes data if table already exists.
+        //
 
         Statement stmt = null;
         Connection connection = null;
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
 
-    try
+            String dropTable = "DROP TABLE IF EXISTS tasks";
+            stmt.executeUpdate(dropTable);
 
-    {
-        connection = basicDataSource.getConnection();
-        stmt = connection.createStatement();
-        String dropTabel = "DROP TABLE IF EXISTS tasks";
-        stmt.executeUpdate(dropTabel);
+            String createTable = "CREATE TABLE tasks (" +
+                    "id SERIAL PRIMARY KEY, " +
+                    "name varchar(100) NOT NULL, " +
+                    "description varchar(250) NOT NULL, " +
+                    "priority int NOT NULL)";
+            stmt.executeUpdate(createTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
 
-        String createTable = "CREATE TABLE tasks(" +
-                "id SERIAL PRIMARY KEY, " +
-                "name varchar (100) NOT NULL, " +
-                "description varchar (250) NUT NULL, " +
-                "priority int NOT NULL)";
-        stmt.executeUpdate(createTable);
 
-    } catch(SQLException e){
-        e.printStackTrace();
+        }
     }
-    try{
-        stmt.close();
-        connection.close();
-
-    }catch(SQLException e){
-        e.printStackTrace();
-    }
-
-}
 }
