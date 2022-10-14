@@ -1,4 +1,4 @@
-package com.mosbach.demo;
+package com.dhbw.RestaurantsReservation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,16 +1,8 @@
-package com.mosbach.demo.model.task;
+package com.dhbw.RestaurantsReservation.model.task;
 
-import com.mosbach.demo.SimpleAWSCredentials;
-import com.mosbach.demo.dataManager.TaskManager;
-import com.mosbach.demo.dataManagerImpl.PostgresTaskManagerImpl;
-import com.mosbach.demo.dataManagerImpl.PropertyFileTaskManagerImpl;
-import com.mosbach.demo.model.student.Student;
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClient;
-import com.amazonaws.services.sqs.model.SendMessageRequest;
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.student.Student;
 
 
 import java.util.Collection;

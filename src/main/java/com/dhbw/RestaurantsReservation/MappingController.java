@@ -1,12 +1,12 @@
-package com.mosbach.demo;
+package com.dhbw.RestaurantsReservation;
 
-import com.mosbach.demo.dataManagerImpl.PostgresTaskManagerImpl;
-import com.mosbach.demo.model.alexa.AlexaRO;
-import com.mosbach.demo.model.alexa.OutputSpeechRO;
-import com.mosbach.demo.model.alexa.ResponseRO;
-import com.mosbach.demo.model.student.Student;
-import com.mosbach.demo.model.task.Task;
-import com.mosbach.demo.model.task.TaskList;
+import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.alexa.AlexaRO;
+import com.dhbw.RestaurantsReservation.model.alexa.OutputSpeechRO;
+import com.dhbw.RestaurantsReservation.model.alexa.ResponseRO;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
+import com.dhbw.RestaurantsReservation.model.task.TaskList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

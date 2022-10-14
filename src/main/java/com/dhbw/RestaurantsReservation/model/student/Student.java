@@ -1,4 +1,4 @@
-package com.mosbach.demo.model.student;
+package com.dhbw.RestaurantsReservation.model.student;
 
 public class Student {
 

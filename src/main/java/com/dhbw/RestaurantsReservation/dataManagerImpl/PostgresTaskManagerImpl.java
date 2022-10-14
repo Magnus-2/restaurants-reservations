@@ -1,8 +1,8 @@
-package com.mosbach.demo.dataManagerImpl;
+package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
-import com.mosbach.demo.dataManager.TaskManager;
-import com.mosbach.demo.model.student.Student;
-import com.mosbach.demo.model.task.Task;
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import java.sql.Connection;
@@ -12,13 +12,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Properties;
 
 public class PostgresTaskManagerImpl implements TaskManager {
 
-    String databaseURL = "jdbc:postgresql://ec2-44-209-186-51.compute-1.amazonaws.com:5432/d7dbn5vkl1366d";
-    String username = "udtdswiogeoans";
-    String password = "3b41fbe722ae0b7a403ef57e66215cb5f84a33ea7a5178890e61605eca6102a1";
+    String databaseURL = "jdbc:postgresql://ec2-34-252-216-149.eu-west-1.compute.amazonaws.com:5432/d9ggrcte17fo7h";
+    String username = "pbyofpxpstoaup";
+    String password = "349a5066ac0eef81cd2f2771a0b722448f2b9222f4832d66a8e78be1627a006b";
     BasicDataSource basicDataSource;
 
     static PostgresTaskManagerImpl postgresTaskManager = null;

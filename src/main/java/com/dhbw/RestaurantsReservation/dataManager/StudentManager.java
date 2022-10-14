@@ -1,4 +1,4 @@
-package com.mosbach.demo.dataManager;
+package com.dhbw.RestaurantsReservation.dataManager;
 
 public interface StudentManager {
 

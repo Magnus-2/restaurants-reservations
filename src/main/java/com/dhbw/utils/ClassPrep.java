@@ -1,4 +1,4 @@
-package com.mosbach.utils;
+package com.dhbw.utils;
 
 public class ClassPrep {
 

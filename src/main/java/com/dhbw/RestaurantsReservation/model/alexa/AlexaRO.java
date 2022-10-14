@@ -1,9 +1,7 @@
-package com.mosbach.demo.model.alexa;
+package com.dhbw.RestaurantsReservation.model.alexa;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.*;
 

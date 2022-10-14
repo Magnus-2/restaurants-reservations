@@ -1,4 +1,4 @@
-package com.mosbach.demo.model.task;
+package com.dhbw.RestaurantsReservation.model.task;
 
 public class Task {
 

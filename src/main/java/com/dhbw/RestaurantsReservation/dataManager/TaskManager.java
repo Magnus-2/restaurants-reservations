@@ -1,7 +1,7 @@
-package com.mosbach.demo.dataManager;
+package com.dhbw.RestaurantsReservation.dataManager;
 
-import com.mosbach.demo.model.student.Student;
-import com.mosbach.demo.model.task.Task;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 
 import java.util.Collection;
 

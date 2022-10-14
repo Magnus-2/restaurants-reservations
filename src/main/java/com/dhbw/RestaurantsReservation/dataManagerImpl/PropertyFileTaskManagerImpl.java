@@ -1,8 +1,8 @@
-package com.mosbach.demo.dataManagerImpl;
+package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
-import com.mosbach.demo.dataManager.TaskManager;
-import com.mosbach.demo.model.student.Student;
-import com.mosbach.demo.model.task.Task;
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class PropertyFileTaskManagerImpl implements TaskManager {
 

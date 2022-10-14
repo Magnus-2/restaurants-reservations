@@ -1,4 +1,4 @@
-package com.mosbach.demo;
+package com.dhbw.RestaurantsReservation;
 
 import com.amazonaws.auth.AWSCredentials;
 

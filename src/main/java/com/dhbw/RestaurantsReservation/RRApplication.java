@@ -1,13 +1,13 @@
-package com.mosbach.demo;
+package com.dhbw.RestaurantsReservation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class RRApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(RRApplication.class, args);
 	}
 
 }
