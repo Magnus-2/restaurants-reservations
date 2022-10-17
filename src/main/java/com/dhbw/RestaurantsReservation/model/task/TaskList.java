@@ -31,7 +31,6 @@ public class TaskList {
 	}
 
 	public void setTasks() {
-		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		tasks = taskManager.getAllTasks(new User("Max", "Muster", "test",
 				"Muster@mail.com", 0));
@@ -39,7 +38,6 @@ public class TaskList {
 
 	@SuppressWarnings("deprecation")
 	public void addTask(Task task) {
-		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		taskManager.addTask(task, new User("Max", "Muster", "test",
 				"Muster@mail.com", 0));

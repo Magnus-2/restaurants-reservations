@@ -34,7 +34,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
     @Override
     public Collection<Task> getAllTasks(User user) {
 
-        // I am ignoring the student and retrieve all tasks from the file
+        // I am ignoring the Users and retrieve all tasks from the file
 
         List<Task> tasks = new ArrayList<>();
 

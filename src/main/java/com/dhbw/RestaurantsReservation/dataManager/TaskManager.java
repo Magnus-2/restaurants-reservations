@@ -14,6 +14,6 @@ public interface TaskManager {
     // removeTask, getTasksInOrder, getTaskByTaskID, ...
 
     // TODO
-    // Make the TaskManager handling students.
+    // Make the TaskManager handling users.
 
 }
