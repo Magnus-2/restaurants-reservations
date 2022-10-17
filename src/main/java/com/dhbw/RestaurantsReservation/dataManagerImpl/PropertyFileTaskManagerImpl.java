@@ -1,7 +1,7 @@
 package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
-import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
 
 import java.io.FileInputStream;
@@ -32,7 +32,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
 
     @Override
-    public Collection<Task> getAllTasks(Student student) {
+    public Collection<Task> getAllTasks(User user) {
 
         // I am ignoring the student and retrieve all tasks from the file
 
@@ -63,14 +63,14 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
     }
 
     @Override
-    public void addTask(Task task, Student student) {
-        Collection<Task> tasks = getAllTasks(student);
+    public void addTask(Task task, User user) {
+        Collection<Task> tasks = getAllTasks(user);
         tasks.add(task);
-        storeAllTasks(tasks, student);
+        storeAllTasks(tasks, user);
     }
 
 
-    public void storeAllTasks(Collection<Task> tasks, Student student) {
+    public void storeAllTasks(Collection<Task> tasks, User user) {
 
         // I am ignoring the student and storing all tasks to the file
 

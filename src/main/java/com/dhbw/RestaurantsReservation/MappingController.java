@@ -4,7 +4,7 @@ import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
 import com.dhbw.RestaurantsReservation.model.alexa.AlexaRO;
 import com.dhbw.RestaurantsReservation.model.alexa.OutputSpeechRO;
 import com.dhbw.RestaurantsReservation.model.alexa.ResponseRO;
-import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
 import com.dhbw.RestaurantsReservation.model.task.TaskList;
 import org.springframework.http.HttpStatus;
@@ -32,11 +32,11 @@ public class MappingController {
 
 
     @GetMapping("/task/all")
-    public TaskList getTasks(@RequestParam(value = "name", defaultValue = "Student") String name) {
+    public TaskList getTasks(@RequestParam(value = "name", defaultValue = "User") String name) {
 
 
         TaskList taskList = new TaskList(
-                                    new Student("me", name)
+                                    new User("Max", "Muster", "test", name, 0)
                             );
         taskList.setTasks();
 
@@ -52,8 +52,8 @@ public class MappingController {
     public Task createTask(@RequestBody Task task) {
 
         TaskList taskList = new TaskList(
-                                    new Student("me", "ignore")
-                            );
+                                    new User("Max", "Muster", "test",
+                                            "Muster@mail.com", 0));
         taskList.addTask(task);
         return task;
     }
@@ -98,8 +98,8 @@ public class MappingController {
 
                 //tasks hinzufügen
                 TaskList taskList = new TaskList(
-                        new Student("me", "me")
-                );
+                        new User("Max", "Muster", "test",
+                                "Muster@email.com", 0));
                 taskList.setTasks();
                 AtomicInteger i = new AtomicInteger(0);
                 taskList.getTasks().forEach(

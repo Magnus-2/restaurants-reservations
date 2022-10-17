@@ -2,28 +2,28 @@ package com.dhbw.RestaurantsReservation.model.task;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
-import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.user.User;
 
 
 import java.util.Collection;
 
 public class TaskList {
 	
-	private Student student;
+	private User user;
 	private Collection<Task> tasks;
 
 	public TaskList() { }
 
-	public TaskList(Student student) {
-		this.student = student;
+	public TaskList(User user) {
+		this.user = user;
 	}
 
-	public Student getStudent() {
-		return student;
+	public User getUser() {
+		return user;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Collection<Task> getTasks() {
@@ -33,14 +33,16 @@ public class TaskList {
 	public void setTasks() {
 		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		tasks = taskManager.getAllTasks(new Student("me", "me"));
+		tasks = taskManager.getAllTasks(new User("Max", "Muster", "test",
+				"Muster@mail.com", 0));
 	}
 
 	@SuppressWarnings("deprecation")
 	public void addTask(Task task) {
 		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		taskManager.addTask(task, new Student("me", "me"));
+		taskManager.addTask(task, new User("Max", "Muster", "test",
+				"Muster@mail.com", 0));
 
 		// Region euCentral = Region.getRegion(Regions.US_EAST_1);
 		// sqs.setRegion(euCentral);
