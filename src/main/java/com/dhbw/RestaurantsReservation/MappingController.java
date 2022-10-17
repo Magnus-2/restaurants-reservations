@@ -32,11 +32,12 @@ public class MappingController {
 
 
     @GetMapping("/task/all")
-    public TaskList getTasks(@RequestParam(value = "userName, userSureName", defaultValue = "User") String name) {
+    public TaskList getTasks(@RequestParam(value = "userName, userSureName", defaultValue = "userID") String name) {
 
 
         TaskList taskList = new TaskList(
-                                    new User("Maxi", "Muster", "test", name, 0)
+                                    new User("Maxi", "Muster", "test",
+                                            "Muster@mail.com",  0)
                             );
         taskList.setTasks();
 
