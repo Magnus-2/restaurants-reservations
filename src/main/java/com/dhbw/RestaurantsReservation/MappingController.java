@@ -36,7 +36,7 @@ public class MappingController {
 
 
         TaskList taskList = new TaskList(
-                                    new User("Max", "Muster", "test",
+                                    new User("Maximilian", "Muster", "test",
                                             "Muster@mail.com",  0)
                             );
         taskList.setTasks();
