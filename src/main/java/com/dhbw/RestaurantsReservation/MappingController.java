@@ -9,7 +9,9 @@ import com.dhbw.RestaurantsReservation.model.task.Task;
 import com.dhbw.RestaurantsReservation.model.task.TaskList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -25,7 +27,20 @@ public class MappingController {
     // TODO
     // delete, update, get by id, get sorted, ...
     //
+   /* @DeleteMapping(
+            path = "/delete/{userID}"
 
+    )
+    public String deleteUser(@PathVariable Integer userID){
+        User user = TaskList.remove(userID);
+        if(user == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        }
+        String answer = "User wurde gelöscht";
+        return answer;
+    }
+*/
     // TODO
     // Set the used DataProvider (ProperyFileManager, PostgresMaganer) here and not in TaskList
     //
@@ -45,6 +60,31 @@ public class MappingController {
         return taskList;
     }
 
+
+    @PostMapping(
+            path = "/user",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    public User createUser(@RequestBody User user){
+        TaskList userList = new TaskList(
+                new User("test", "testsurename", "hallo",
+                        "test@test.com", 3)
+        );
+        return user;
+    }
+
+    @GetMapping("/user/all")
+    public TaskList getUser(@RequestParam(value = "userName",defaultValue = "eMail") String user) {
+
+
+        TaskList taskList = new TaskList(
+                new User("Maximilian", "Muster", "test",
+                        "Muster@mail.com",  0)
+        );
+        taskList.setTasks();
+
+        return taskList;
+    }
 
     @PostMapping(
             path = "/task",
