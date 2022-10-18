@@ -1,6 +1,7 @@
 package com.dhbw.RestaurantsReservation;
 
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresUserManagerImpl;
 import com.dhbw.RestaurantsReservation.model.alexa.AlexaRO;
 import com.dhbw.RestaurantsReservation.model.alexa.OutputSpeechRO;
 import com.dhbw.RestaurantsReservation.model.alexa.ResponseRO;
@@ -113,6 +114,19 @@ public class MappingController {
         final PostgresTaskManagerImpl postgresTaskManagerImpl =
                 PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
         postgresTaskManagerImpl.createTableTask();
+
+        return "Database Table created";
+    }
+
+    @PostMapping(
+            path = "/user/createtable"
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public String createUser() {
+
+        final PostgresUserManagerImpl postgresUserManagerImpl =
+                PostgresUserManagerImpl.getPostgresUserManagerImpl();
+        postgresUserManagerImpl.createTableUser();
 
         return "Database Table created";
     }

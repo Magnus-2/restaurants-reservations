@@ -42,8 +42,24 @@ public class UserList {
     @SuppressWarnings("deprecation")
     public void addUser(User user) {
         UserManager userManager = PostgresUserManagerImpl.getPostgresUserManagerImpl();
-        userManager.addUser(user, new User("Max", "Muster", "test",
-                "Muster@mail.com", 0));
+        userManager.addUser(user);
+
+        // Region euCentral = Region.getRegion(Regions.US_EAST_1);
+        // sqs.setRegion(euCentral);
+        // .withDelaySeconds(1);
+
+/*
+		AWSCredentials awsCredentials = new SimpleAWSCredentials();
+		AmazonSQS sqs = new AmazonSQSClient(awsCredentials);
+
+		SendMessageRequest send_msg_request = new SendMessageRequest()
+		        .withQueueUrl("https://sqs.us-east-1.amazonaws.com/887927861730/Mosbach-task-organizer-Created-new-task")
+		        .withMessageBody("Added the following task: " + task.getName() + " with priority: " + task.getPriority());
+		sqs.sendMessage(send_msg_request);
+*/
+
+
+
     }
 
 }

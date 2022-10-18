@@ -76,7 +76,7 @@ public class PostgresUserManagerImpl implements UserManager {
     }
 
     @Override
-    public void addUser(User user, User users) {
+    public void addUser(User user) {
 
         Statement stmt = null;
         Connection connection = null;
