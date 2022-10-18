@@ -7,6 +7,7 @@ import com.dhbw.RestaurantsReservation.model.alexa.ResponseRO;
 import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
 import com.dhbw.RestaurantsReservation.model.task.TaskList;
+import com.dhbw.RestaurantsReservation.model.user.UserList;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -67,7 +68,7 @@ public class MappingController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     public User createUser(@RequestBody User user){
-        TaskList userList = new TaskList(
+        UserList userList = new UserList(
                 new User("test", "testsurename", "hallo",
                         "test@test.com", 3)
         );
@@ -75,16 +76,16 @@ public class MappingController {
     }
 
     @GetMapping("/user/all")
-    public TaskList getUser(@RequestParam(value = "userName",defaultValue = "eMail") String user) {
+    public UserList getUser(@RequestParam(value = "userName",defaultValue = "eMail") String user) {
 
 
-        TaskList taskList = new TaskList(
+        UserList userList = new UserList(
                 new User("Maximilian", "Muster", "test",
                         "Muster@mail.com",  0)
         );
-        taskList.setTasks();
+        userList.setUsers();
 
-        return taskList;
+        return userList;
     }
 
     @PostMapping(

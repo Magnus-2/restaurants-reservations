@@ -27,21 +27,47 @@ public class User {
         this.userID = userID;
     }
 
-    public String getuserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setuserName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String geteMail() {
+    public String getUserSureName() {
+        return userSureName;
+    }
+
+    public void setUserSureName(String userSureName) {
+        this.userSureName = userSureName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String  geteMail() {
         return eMail;
     }
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+
+
 
     public String getLoginedInToken() {
         return loginedInToken;
