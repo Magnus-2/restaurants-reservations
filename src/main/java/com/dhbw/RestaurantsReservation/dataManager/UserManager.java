@@ -9,6 +9,6 @@ public interface UserManager {
     // getAllStudents, getSpecificStudent, logStudentOn, logStudentOff, ...
 
     Collection<User> getAllUsers(User user);
-    void addUser(User users, User user);
+    void addUser(User user, User users);
     //zum Probieren ob dennoch alles geht
 }
