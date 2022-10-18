@@ -1,7 +1,10 @@
 package com.dhbw.RestaurantsReservation.model.user;
 
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
 import com.dhbw.RestaurantsReservation.dataManager.UserManager;
+import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresUserManagerImpl;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 import com.dhbw.RestaurantsReservation.model.user.User;
 
 import java.util.Collection;
@@ -35,4 +38,12 @@ public class UserList {
                 "Muster@mail.com", 0));
         this.users = users;
     }
+
+    @SuppressWarnings("deprecation")
+    public void addUser(User user) {
+        UserManager userManager = PostgresUserManagerImpl.getPostgresUserManagerImpl();
+        userManager.addUser(user, new User("Max", "Muster", "test",
+                "Muster@mail.com", 0));
+    }
+
 }
