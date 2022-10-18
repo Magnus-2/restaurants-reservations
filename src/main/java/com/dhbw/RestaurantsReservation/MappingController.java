@@ -132,7 +132,7 @@ public class MappingController {
     }
 
 
-
+/*
     @PostMapping(
             path = "/alexa",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
@@ -190,5 +190,7 @@ public class MappingController {
         alexaRO.setResponse(response);
         return alexaRO;
     }
+
+ */
 
 }
