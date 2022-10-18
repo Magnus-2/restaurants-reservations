@@ -85,11 +85,11 @@ public class PostgresUserManagerImpl implements UserManager {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
             String udapteSQL = "INSERT into users (userName, userSureName, userPassword, eMail, userID) VALUES (" +
-                    "'" + user1.getUserName() + "', " +
-                    "'" + user1.getUserSureName() + "', " +
-                    "'" + user1.getUserPassword() + "', " +
-                    "'" + user1.geteMail() + "', " +
-                    "'" + user1.getUserID() + "')";
+                    "'" + user2.getUserName() + "', " +
+                    "'" + user2.getUserSureName() + "', " +
+                    "'" + user2.getUserPassword() + "', " +
+                    "'" + user2.geteMail() + "', " +
+                    "'" + user2.getUserID() + "')";
 
             stmt.executeUpdate(udapteSQL);
 
