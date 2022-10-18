@@ -40,9 +40,10 @@ public class UserList {
     }
 
     @SuppressWarnings("deprecation")
-    public void addUser(User user) {
+    public void addUser(User user1) {// user1 muss auch noch geändert werden zu task oder account
         UserManager userManager = PostgresUserManagerImpl.getPostgresUserManagerImpl();
-        userManager.addUser(user);
+        userManager.addUser(user1, new User("Max", "Muster", "test",
+                "Muster@mail.com", 0));
 
         // Region euCentral = Region.getRegion(Regions.US_EAST_1);
         // sqs.setRegion(euCentral);

@@ -76,8 +76,8 @@ public class PostgresUserManagerImpl implements UserManager {
     }
 
     @Override
-    public void addUser(User user) {
-
+    public void addUser(User user1, User user2) {
+// Hier muss Task oder account hin wenn das gehen soll
         Statement stmt = null;
         Connection connection = null;
 
@@ -85,11 +85,11 @@ public class PostgresUserManagerImpl implements UserManager {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
             String udapteSQL = "INSERT into users (userName, userSureName, userPassword, eMail, userID) VALUES (" +
-                    "'" + user.getUserName() + "', " +
-                    "'" + user.getUserSureName() + "', " +
-                    "'" + user.getUserPassword() + "', " +
-                    "'" + user.geteMail() + "', " +
-                    "'" + user.getUserID() + "')";
+                    "'" + user1.getUserName() + "', " +
+                    "'" + user1.getUserSureName() + "', " +
+                    "'" + user1.getUserPassword() + "', " +
+                    "'" + user1.geteMail() + "', " +
+                    "'" + user1.getUserID() + "')";
 
             stmt.executeUpdate(udapteSQL);
 

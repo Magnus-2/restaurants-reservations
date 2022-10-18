@@ -9,6 +9,6 @@ public interface UserManager {
     // getAllStudents, getSpecificStudent, logStudentOn, logStudentOff, ...
 
     Collection<User> getAllUsers(User user);
-    void addUser(User user);
-
+    void addUser(User user1, User user2);
+// Muss geändert werden zu Task task oder account
 }
