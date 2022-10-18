@@ -31,8 +31,9 @@ public class MappingController {
     //
 
 
+
     @GetMapping("/task/all")
-    public TaskList getUser(@RequestParam(value = "userName", defaultValue = "userID") String name) {
+    public TaskList getTask(@RequestParam(value = "userName", defaultValue = "userID") String name) {
 
 
         TaskList taskList = new TaskList(
@@ -53,8 +54,8 @@ public class MappingController {
     public Task createTask(@RequestBody Task task) {
 
         TaskList taskList = new TaskList(
-                                    new User("Max", "Muster", "test",
-                                            "Muster@mail.com", 0));
+                                    new User("Maxasdf", "Musterasdf", "test",
+                                            "Mustdffffer@mail.com", 2));
         taskList.addTask(task);
         return task;
     }
