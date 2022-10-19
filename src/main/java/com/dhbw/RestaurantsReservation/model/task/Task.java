@@ -2,35 +2,25 @@ package com.dhbw.RestaurantsReservation.model.task;
 
 public class Task {
 
-	private String userName = "";
-	private String userSureName = "";
 	private String eMail = "";
 	private String userPassword = "";
 	private int userID = 0;
+
+	private int userAccount = 0;
 
 	public Task() {
 		
 	}
 
-	public Task(String userName, String userSureName,String eMail, String userPassword, int userID) {
+	public Task(String eMail, String userPassword, int userID, int userAccount) {
 		super();
-		this.userName = userName;
-		this.userSureName = userSureName;
 		this.eMail = eMail;
 		this.userPassword = userPassword;
 		this.userID = userID;
+		this.userAccount = userAccount;
+
 
 	}
-
-	public String getUserName() { return userName;}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public String getUserSureName() {return userSureName;}
-	public void  setUserSureName(String userSureName){this.userSureName = userSureName;}
-
 
 	public String geteMail() {
 		return eMail;
@@ -48,6 +38,14 @@ public class Task {
 		return userID;
 	}
 	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+
+	public int getUserAccount() {
+		return userAccount;
+	}
+	public void setUserAccount(int userAccount) {
 		this.userID = userID;
 	}
 

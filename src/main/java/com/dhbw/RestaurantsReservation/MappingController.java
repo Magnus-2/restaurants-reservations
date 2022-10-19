@@ -50,19 +50,6 @@ public class MappingController {
 
 
 
-    @GetMapping("/task/all")
-    public TaskList getTask(@RequestParam(value = "userName", defaultValue = "userID") String name) {
-
-
-        TaskList taskList = new TaskList(
-                                    new User("Maximilian", "Muster", "test",
-                                            "Muster@mail.com",  0)
-                            );
-        taskList.setTasks();
-
-        return taskList;
-    }
-
 
     @PostMapping(
             path = "/user",
@@ -70,24 +57,39 @@ public class MappingController {
     )
     public User createUser(@RequestBody User user){
         UserList userList = new UserList(
-                new User("test", "testsurename", "hallo",
-                        "test@test.com", 3)
+                new User("test", "testsurename",
+                        "test@test.com","hallo", 3)
         );
         return user;
     }
 
     @GetMapping("/user/all")
-    public UserList getUser(@RequestParam(value = "userName",defaultValue = "eMail") String user) {
+    public UserList getUser(@RequestParam(value = "userName",defaultValue = "eMail") String userName) {
 
 
         UserList userList = new UserList(
-                new User("Maximilian", "Muster", "test",
-                        "Muster@mail.com",  0)
+                new User("Maximilian", "Muster",
+                        "Muster@mail.com", "test", 0)
         );
         userList.setUsers();
 
         return userList;
     }
+
+    @GetMapping("/task/all")
+    public TaskList getTask(@RequestParam(value = "userName", defaultValue = "userID") String eMail) {
+
+
+        TaskList taskList = new TaskList(
+                new User("Maximilian", "Muster", "test",
+                        "Muster@mail.com",  0)
+        );
+        taskList.setTasks();
+
+        return taskList;
+    }
+
+
 
 
     @PostMapping(

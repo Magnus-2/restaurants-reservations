@@ -43,15 +43,14 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         try {
             properties.load(new FileInputStream(fileName));
 
-           while(properties.containsKey("Task."+ i +".name")) {
+           while(properties.containsKey("Task."+ i +".eMail")) {
                System.out.println("Bin in der list.");
                tasks.add(
                        new Task(
-                               properties.getProperty("Task."+ i +".userNme"),
-                               properties.getProperty("Task."+ i +".userSureName"),
                                properties.getProperty("Task."+ i +".eMail"),
                                properties.getProperty("Task."+ i +".userPassword"),
-                               Integer.parseInt(properties.getProperty("Task."+ i +".userID")))
+                               Integer.parseInt(properties.getProperty("Task."+ i +".userID")),
+                               Integer.parseInt(properties.getProperty("Task."+ i +".userAccount")))
                );
                i++;
            }
@@ -80,11 +79,10 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         AtomicInteger i = new AtomicInteger(0);
         tasks.forEach(
                 task -> {
-                    properties.setProperty("Task."+ i.incrementAndGet() + ".name", task.getUserName());
-                    properties.setProperty("Task."+ i.get() + ".description", task.getUserSureName());
-                    properties.setProperty("Task."+ i.get() + ".description", task.geteMail());
-                    properties.setProperty("Task."+ i.get() + ".description", task.getUserPassword());
-                    properties.setProperty("Task."+ i.get() + ".priority",""+ task.getUserID());
+                    properties.setProperty("Task."+ i.get() + ".eMail", task.geteMail());
+                    properties.setProperty("Task."+ i.get() + ".userPassword", task.getUserPassword());
+                    properties.setProperty("Task."+ i.get() + ".userID",""+ task.getUserID());
+                    properties.setProperty("Task."+ i.get() + ".userAccount",""+ task.getUserAccount());
                 }
         );
         try{

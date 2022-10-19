@@ -32,8 +32,8 @@ public class TaskList {
 
 	public void setTasks() {
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		tasks = taskManager.getAllTasks(new User("Max", "Muster", "test",
-				"Muster@mail.com", 0));
+		tasks = taskManager.getAllTasks(new User("Max", "Muster",
+				"Muster@mail.com","test", 0));
 	}
 
 	@SuppressWarnings("deprecation")
