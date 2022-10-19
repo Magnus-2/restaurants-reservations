@@ -16,7 +16,8 @@ public class User {
     private String eMail;
     private String userPassword;
     private Integer userID;
-  //  private String loginedInToken;
+
+    private String loginedInToken;
 
 
     public User(String userName, String userSureName, String userPassword, String eMail,  Integer userID) {
@@ -68,7 +69,7 @@ public class User {
 
 
 
-/*    public String getLoginedInToken() {
+    public String getLoginedInToken() {
         return loginedInToken;
     }
 
@@ -79,5 +80,5 @@ public class User {
     public void logStudentOff() {
         loginedInToken = "";
     }
-*/
+
 }

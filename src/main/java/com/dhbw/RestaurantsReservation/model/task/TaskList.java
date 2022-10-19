@@ -31,16 +31,16 @@ public class TaskList {
 	}
 
 	public void setTasks() {
-		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		tasks = taskManager.getAllTasks(new User("Max", "Muster",
-				"Muster@mail.com","test", 0));
+		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();// Returns a new PostgrsTaskManager
+		tasks = taskManager.getAllTasks(new User("me", "me",
+				"me","m@", 0));
 	}
 
 	@SuppressWarnings("deprecation")
 	public void addTask(Task task) {
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		taskManager.addTask(task, new User("Max", "Muster", "test",
-				"Muster@mail.com", 0));
+		taskManager.addTask(task, new User("me", "me", "me",
+				"m@", 0));
 
 		// Region euCentral = Region.getRegion(Regions.US_EAST_1);
 		// sqs.setRegion(euCentral);

@@ -81,8 +81,8 @@ public class MappingController {
 
 
         TaskList taskList = new TaskList(
-                new User("Maximilian", "Muster", "test",
-                        eMail,  0)
+                new User("me", "me", "me",
+                        "m@",  0)
         );
         taskList.setTasks();
 
@@ -100,8 +100,8 @@ public class MappingController {
     public Task createTask(@RequestBody Task task) {
 
         TaskList taskList = new TaskList(
-                                    new User("Maxasdf", "Musterasdf", "test",
-                                            "Mustdffffer@mail.com", 2));
+                                    new User("me", "ignore", "me",
+                                            "m@", 0));
         taskList.addTask(task);
         return task;
     }

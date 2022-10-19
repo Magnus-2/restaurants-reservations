@@ -5,7 +5,6 @@ public class Task {
 	private String eMail = "";
 	private String userPassword = "";
 	private int userID = 0;
-
 	private int userAccount = 0;
 
 	public Task() {
