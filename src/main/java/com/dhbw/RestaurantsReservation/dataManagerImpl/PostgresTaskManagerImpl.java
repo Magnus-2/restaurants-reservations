@@ -114,6 +114,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         // Be carefull: It deletes data if table already exists.
         //
 
+
         Statement stmt = null;
         Connection connection = null;
         try {
