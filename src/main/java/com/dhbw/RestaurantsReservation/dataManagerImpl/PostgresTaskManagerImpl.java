@@ -54,9 +54,11 @@ public class PostgresTaskManagerImpl implements TaskManager {
             while (rs.next()) {
                 tasks.add(
                         new Task(
-                                rs.getString("name"),
-                                rs.getString("description"),
-                                rs.getInt("priority")
+                                rs.getString("userName"),
+                                rs.getString("userSureName"),
+                                rs.getString("eMail"),
+                                rs.getString("userPassword"),
+                                rs.getInt("userID")
                         )
                 );
             }
@@ -84,10 +86,12 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into tasks (name, description, priority) VALUES (" +
-                    "'" + task.getName() + "', " +
-                    "'" + task.getDescription() + "', " +
-                    "'" + task.getPriority() + "')";
+            String udapteSQL = "INSERT into tasks (userName, userSureName, eMail, userPassword, userID) VALUES (" +
+                    "'" + task.getUserName() + "', " +
+                    "'" + task.getUserSureName() + "', " +
+                    "'" + task.geteMail()+ "', " +
+                    "'" + task.getUserPassword() + "', " +
+                    "'" + task.getUserID() + "')";
 
             stmt.executeUpdate(udapteSQL);
 
