@@ -77,12 +77,12 @@ public class MappingController {
     }
 
     @GetMapping("/task/all")
-    public TaskList getTask(@RequestParam(value = "userName", defaultValue = "userID") String eMail) {
+    public TaskList getTask(@RequestParam(value = "eMail", defaultValue = "User") String eMail) {
 
 
         TaskList taskList = new TaskList(
                 new User("Maximilian", "Muster", "test",
-                        "Muster@mail.com",  0)
+                        eMail,  0)
         );
         taskList.setTasks();
 
