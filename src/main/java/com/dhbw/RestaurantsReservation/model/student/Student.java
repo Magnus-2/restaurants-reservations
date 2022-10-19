@@ -1,4 +1,4 @@
-package com.dhbw.restaurantsReservation.model.student;
+package com.dhbw.RestaurantsReservation.model.student;
 
 public class Student {
 

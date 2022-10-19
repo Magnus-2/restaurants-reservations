@@ -1,4 +1,4 @@
-package com.dhbw.restaurantsReservation.dataManager;
+package com.dhbw.RestaurantsReservation.dataManager;
 
 public interface StudentManager {
 

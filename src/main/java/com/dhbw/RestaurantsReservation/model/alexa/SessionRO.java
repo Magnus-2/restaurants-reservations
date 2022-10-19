@@ -1,4 +1,4 @@
-package com.dhbw.restaurantsReservation.model.alexa;
+package com.dhbw.RestaurantsReservation.model.alexa;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -8,27 +8,28 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.util.HashMap;
 import java.util.Map;
 
-@JsonTypeName(value = SlotsRO.TYPENAME)
-public class SlotsRO
+
+@JsonTypeName(value = SessionRO.TYPENAME)
+public class SessionRO 
 {
-    protected final static String TYPENAME = "SlotRO";
+    protected final static String TYPENAME = "SessionRO";
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<>();
 
-    public SlotsRO()
+    public SessionRO()
     {
         super();
     }
-  
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    return this.additionalProperties;
     }
 
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    this.additionalProperties.put(name, value);
     }
 
 }

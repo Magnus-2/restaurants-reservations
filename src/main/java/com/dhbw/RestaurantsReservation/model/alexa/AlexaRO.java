@@ -1,4 +1,4 @@
-package com.dhbw.restaurantsReservation.model.alexa;
+package com.dhbw.RestaurantsReservation.model.alexa;
 
 import java.util.HashMap;
 import java.util.Map;

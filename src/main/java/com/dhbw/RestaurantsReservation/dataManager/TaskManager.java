@@ -1,7 +1,7 @@
-package com.dhbw.restaurantsReservation.dataManager;
+package com.dhbw.RestaurantsReservation.dataManager;
 
-import com.dhbw.restaurantsReservation.model.student.Student;
-import com.dhbw.restaurantsReservation.model.task.Task;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 
 import java.util.Collection;
 

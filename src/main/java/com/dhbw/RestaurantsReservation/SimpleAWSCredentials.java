@@ -1,4 +1,4 @@
-package com.dhbw.restaurantsReservation;
+package com.dhbw.RestaurantsReservation;
 
 import com.amazonaws.auth.AWSCredentials;
 

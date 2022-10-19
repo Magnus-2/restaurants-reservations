@@ -1,8 +1,8 @@
-package com.dhbw.restaurantsReservation.model.task;
+package com.dhbw.RestaurantsReservation.model.task;
 
-import com.dhbw.restaurantsReservation.dataManager.TaskManager;
-import com.dhbw.restaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
-import com.dhbw.restaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.student.Student;
 
 
 import java.util.Collection;

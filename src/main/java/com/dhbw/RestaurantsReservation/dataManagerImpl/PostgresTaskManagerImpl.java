@@ -1,8 +1,8 @@
-package com.dhbw.restaurantsReservation.dataManagerImpl;
+package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
-import com.dhbw.restaurantsReservation.dataManager.TaskManager;
-import com.dhbw.restaurantsReservation.model.student.Student;
-import com.dhbw.restaurantsReservation.model.task.Task;
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import java.sql.Connection;
@@ -55,6 +55,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
                 tasks.add(
                         new Task(
                                 rs.getString("name"),
+                                rs.getString("surname"),
                                 rs.getString("description"),
                                 rs.getInt("priority")
                         )

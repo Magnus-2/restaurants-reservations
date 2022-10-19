@@ -1,8 +1,8 @@
-package com.dhbw.restaurantsReservation.dataManagerImpl;
+package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
-import com.dhbw.restaurantsReservation.dataManager.TaskManager;
-import com.dhbw.restaurantsReservation.model.student.Student;
-import com.dhbw.restaurantsReservation.model.task.Task;
+import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.task.Task;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -48,6 +48,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
                tasks.add(
                        new Task(
                                properties.getProperty("Task."+ i +".name"),
+                               properties.getProperty("Task."+ i +".surename"),
                                properties.getProperty("Task."+ i +".description"),
                                Integer.parseInt(properties.getProperty("Task."+ i +".priority")))
                );

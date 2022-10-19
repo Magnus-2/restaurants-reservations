@@ -1,4 +1,4 @@
-package com.dhbw.restaurantsReservation;
+package com.dhbw.RestaurantsReservation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
