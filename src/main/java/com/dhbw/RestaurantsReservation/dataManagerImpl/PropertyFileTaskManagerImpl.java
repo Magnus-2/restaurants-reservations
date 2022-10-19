@@ -48,7 +48,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
                tasks.add(
                        new Task(
                                properties.getProperty("Task."+ i +".name"),
-                               properties.getProperty("Task."+ i +".surename"),
+                               properties.getProperty("Task."+ i +".surname"),
                                properties.getProperty("Task."+ i +".description"),
                                Integer.parseInt(properties.getProperty("Task."+ i +".priority")))
                );
