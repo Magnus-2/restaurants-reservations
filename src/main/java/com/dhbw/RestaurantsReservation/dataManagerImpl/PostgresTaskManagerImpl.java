@@ -85,8 +85,9 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into tasks (name, description, priority) VALUES (" +
+            String udapteSQL = "INSERT into tasks (name, surname, description, priority) VALUES (" +
                     "'" + task.getName() + "', " +
+                    "'" + task.getSurname() + "', " +
                     "'" + task.getDescription() + "', " +
                     "'" + task.getPriority() + "')";
 
