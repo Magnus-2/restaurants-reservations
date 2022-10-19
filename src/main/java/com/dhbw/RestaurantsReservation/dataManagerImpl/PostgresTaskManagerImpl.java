@@ -126,6 +126,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
             String createTable = "CREATE TABLE tasks (" +
                     "id SERIAL PRIMARY KEY, " +
                     "name varchar(100) NOT NULL, " +
+                    "surname varchar(250) NOT NULL, " +
                     "description varchar(250) NOT NULL, " +
                     "priority int NOT NULL)";
             stmt.executeUpdate(createTable);
