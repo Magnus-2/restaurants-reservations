@@ -80,7 +80,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         tasks.forEach(
                 task -> {
                     properties.setProperty("Task."+ i.incrementAndGet() + ".name", task.getName());
-                    properties.setProperty("Task."+ i.incrementAndGet() + ".surname", task.getSurname());
+                    properties.setProperty("Task."+ i.get() + ".surname", task.getSurname());
                     properties.setProperty("Task."+ i.get() + ".description", task.getDescription());
                     properties.setProperty("Task."+ i.get() + ".priority",""+ task.getPriority());
                 }
