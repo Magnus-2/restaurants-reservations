@@ -45,7 +45,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/taskUser",
+            path = "/task/User",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
