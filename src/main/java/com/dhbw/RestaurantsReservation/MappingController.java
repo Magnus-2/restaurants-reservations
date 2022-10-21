@@ -31,7 +31,7 @@ public class MappingController {
     //
 
 
-    @GetMapping("/task/all")
+    @GetMapping("/task/allUser")
     public TaskList getTasks(@RequestParam(value = "name", defaultValue = "User") String name) {
 
 
@@ -45,7 +45,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task",
+            path = "/taskUser",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
@@ -60,7 +60,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task/createtable"
+            path = "/task/createtableUser"
     )
     @ResponseStatus(HttpStatus.OK)
     public String createTask() {
