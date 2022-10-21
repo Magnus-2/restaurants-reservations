@@ -134,12 +134,12 @@ public class MappingController {
         )
 
         {
-            //ich weiß, jemand hat gesagt: Read all my tasks.
-            StringBuilder outText = new StringBuilder ("Hello. You have to do the following tasks.");
+            //ich weiß, jemand hat gesagt: Read all my usertasks.
+            StringBuilder outText = new StringBuilder ("Hello. You have to do the following usertasks.");
             try {
 
 
-                //tasks hinzufügen
+                //usertasks hinzufügen
                 TaskList taskList = new TaskList(
                         new User("me", "me")
                 );
