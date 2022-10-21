@@ -43,16 +43,16 @@ public class PostgresTaskManagerImpl implements TaskManager {
     @Override
     public Collection<Task> getAllTasks(User user) {
 
-        List<Task> tasks = new ArrayList<>();
+        List<Task> usertasks = new ArrayList<>();
         Statement stmt = null;
         Connection connection = null;
 
         try {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM tasks");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM usertasks");
             while (rs.next()) {
-                tasks.add(
+                usertasks.add(
                         new Task(
                                 rs.getString("name"),
                                 rs.getString("surname"),
@@ -73,7 +73,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         }
 
 
-        return tasks;
+        return usertasks;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into tasks (name, surname, description, priority) VALUES (" +
+            String udapteSQL = "INSERT into usertasks (name, surname, description, priority) VALUES (" +
                     "'" + task.getName() + "', " +
                     "'" + task.getSurname() + "', " +
                     "'" + task.getDescription() + "', " +
@@ -123,10 +123,10 @@ public class PostgresTaskManagerImpl implements TaskManager {
                 connection = basicDataSource.getConnection();
                 stmt = connection.createStatement();
 
-                String dropTable = "DROP TABLE IF EXISTS user-tasks";
+                String dropTable = "DROP TABLE IF EXISTS usertasks";
                 stmt.executeUpdate(dropTable);
 
-                String createTable = "CREATE TABLE user-tasks (" +
+                String createTable = "CREATE TABLE usertasks (" +
                         "id SERIAL PRIMARY KEY, " +
                         "name varchar(100) NOT NULL, " +
                         "surname varchar(250) NOT NULL, " +
@@ -152,10 +152,10 @@ public class PostgresTaskManagerImpl implements TaskManager {
                 connection = basicDataSource.getConnection();
                 stmt = connection.createStatement();
 
-                String dropTable = "DROP TABLE IF EXISTS restaurants-tasks";
+                String dropTable = "DROP TABLE IF EXISTS restaurantstasks";
                 stmt.executeUpdate(dropTable);
 
-                String createTable = "CREATE TABLE restaurants-tasks (" +
+                String createTable = "CREATE TABLE restaurantstasks (" +
                         "id SERIAL PRIMARY KEY, " +
                         "rName varchar(100) NOT NULL, " +
                         "rSeats int NOT NULL, " +

@@ -34,9 +34,9 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
     @Override
     public Collection<Task> getAllTasks(User user) {
 
-        // I am ignoring the student and retrieve all tasks from the file
+        // I am ignoring the user and retrieve all usertasks from the file
 
-        List<Task> tasks = new ArrayList<>();
+        List<Task> usertasks = new ArrayList<>();
 
         Properties properties = new Properties();
         int i = 1;
@@ -45,7 +45,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
            while(properties.containsKey("Task."+ i +".name")) {
                System.out.println("Bin in der list.");
-               tasks.add(
+               usertasks.add(
                        new Task(
                                properties.getProperty("Task."+ i +".name"),
                                properties.getProperty("Task."+ i +".surname"),
@@ -60,24 +60,24 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         }
 
 
-        return tasks;
+        return usertasks;
     }
 
     @Override
     public void addTask(Task task, User user) {
-        Collection<Task> tasks = getAllTasks(user);
-        tasks.add(task);
-        storeAllTasks(tasks, user);
+        Collection<Task> usertasks = getAllTasks(user);
+        usertasks.add(task);
+        storeAllTasks(usertasks, user);
     }
 
 
-    public void storeAllTasks(Collection<Task> tasks, User user) {
+    public void storeAllTasks(Collection<Task> usertasks, User user) {
 
-        // I am ignoring the student and storing all tasks to the file
+        // I am ignoring the student and storing all usertasks to the file
 
         Properties properties = new Properties();
         AtomicInteger i = new AtomicInteger(0);
-        tasks.forEach(
+        usertasks.forEach(
                 task -> {
                     properties.setProperty("Task."+ i.incrementAndGet() + ".name", task.getName());
                     properties.setProperty("Task."+ i.get() + ".surname", task.getSurname());

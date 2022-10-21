@@ -10,7 +10,7 @@ import java.util.Collection;
 public class TaskList {
 	
 	private User user;
-	private Collection<Task> tasks;
+	private Collection<Task> usertasks;
 
 	public TaskList() { }
 
@@ -27,13 +27,13 @@ public class TaskList {
 	}
 
 	public Collection<Task> getTasks() {
-		return tasks;
+		return usertasks;
 	}
 
 	public void setTasks() {
 		//TaskManager taskManager = PropertyFileTaskManagerImpl.getPropertyFileTaskManagerImpl("src/main/resources/TaskList.properties");
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		tasks = taskManager.getAllTasks(new User("me", "me"));
+		usertasks = taskManager.getAllTasks(new User("me", "me"));
 	}
 
 	@SuppressWarnings("deprecation")
