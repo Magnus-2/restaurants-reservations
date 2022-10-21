@@ -60,7 +60,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task/createtableUser"
+            path = "/task/createtable/User"
     )
     @ResponseStatus(HttpStatus.OK)
     public String createTaskUser() {
@@ -103,7 +103,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task/createtableRestaurants"
+            path = "/task/createtable/Restaurants"
     )
     @ResponseStatus(HttpStatus.OK)
     public String createTaskRestaurants() {
