@@ -109,37 +109,74 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
 
 
-    public void createTableTask() {
+    public void createTableTask(Boolean chooser) {
 
         // Be carefull: It deletes data if table already exists.
         //
-
-
         Statement stmt = null;
         Connection connection = null;
-        try {
-            connection = basicDataSource.getConnection();
-            stmt = connection.createStatement();
 
-            String dropTable = "DROP TABLE IF EXISTS tasks";
-            stmt.executeUpdate(dropTable);
+        if (chooser){
+            // if chooser == ture an usertable is created
 
-            String createTable = "CREATE TABLE tasks (" +
-                    "id SERIAL PRIMARY KEY, " +
-                    "name varchar(100) NOT NULL, " +
-                    "surname varchar(250) NOT NULL, " +
-                    "description varchar(250) NOT NULL, " +
-                    "priority int NOT NULL)";
-            stmt.executeUpdate(createTable);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            try {
+                connection = basicDataSource.getConnection();
+                stmt = connection.createStatement();
+
+                String dropTable = "DROP TABLE IF EXISTS user-tasks";
+                stmt.executeUpdate(dropTable);
+
+                String createTable = "CREATE TABLE user-tasks (" +
+                        "id SERIAL PRIMARY KEY, " +
+                        "name varchar(100) NOT NULL, " +
+                        "surname varchar(250) NOT NULL, " +
+                        "description varchar(250) NOT NULL, " +
+                        "priority int NOT NULL)";
+                stmt.executeUpdate(createTable);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                stmt.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+
+            }
+
         }
-        try {
-            stmt.close();
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        else {
+            //if chooser == false a restauranttable is created
+            try {
+                connection = basicDataSource.getConnection();
+                stmt = connection.createStatement();
 
+                String dropTable = "DROP TABLE IF EXISTS restaurants-tasks";
+                stmt.executeUpdate(dropTable);
+
+                String createTable = "CREATE TABLE restaurants-tasks (" +
+                        "id SERIAL PRIMARY KEY, " +
+                        "rName varchar(100) NOT NULL, " +
+                        "rSeats int NOT NULL, " +
+                        "rZipcode int NOT NULL, " +
+                        "rAddress varchar(250) NOT NULL, " +
+                        "rCategory varchar(250) NOT NULL, " +
+                        "rPhone int NOT NULL, " +
+                        "rEmail varchar(250) NOT NULL, " +
+                        "rPassword varchar(250) NOT NULL)";
+                stmt.executeUpdate(createTable);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                stmt.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+
+            }
 
         }
     }

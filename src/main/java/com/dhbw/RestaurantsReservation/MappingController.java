@@ -32,7 +32,7 @@ public class MappingController {
 
 
     @GetMapping("/task/allUser")
-    public TaskList getTasks(@RequestParam(value = "name", defaultValue = "User") String name) {
+    public TaskList getTasksUser(@RequestParam(value = "name", defaultValue = "User") String name) {
 
 
         TaskList taskList = new TaskList(
@@ -49,7 +49,7 @@ public class MappingController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
-    public Task createTask(@RequestBody Task task) {
+    public Task createTaskUser(@RequestBody Task task) {
 
         TaskList taskList = new TaskList(
                                     new User("me", "ignore")
@@ -63,11 +63,54 @@ public class MappingController {
             path = "/task/createtableUser"
     )
     @ResponseStatus(HttpStatus.OK)
-    public String createTask() {
+    public String createTaskUser() {
 
         final PostgresTaskManagerImpl postgresTaskManagerImpl =
                 PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-        postgresTaskManagerImpl.createTableTask();
+        postgresTaskManagerImpl.createTableTask(true);
+
+        return "Database Table created";
+    }
+
+
+
+    @GetMapping("/task/allRestaurants")
+    public TaskList getTasksRestaurants(@RequestParam(value = "name", defaultValue = "Restaurants") String name) {
+
+
+        TaskList taskList = new TaskList(
+                new User("me", name)
+        );
+        taskList.setTasks();
+
+        return taskList;
+    }
+
+
+    @PostMapping(
+            path = "/task/Restaurants",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public Task createTaskRestaurants(@RequestBody Task task) {
+
+        TaskList taskList = new TaskList(
+                new User("me", "ignore")
+        );
+        taskList.addTask(task);
+        return task;
+    }
+
+
+    @PostMapping(
+            path = "/task/createtableRestaurants"
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public String createTaskRestaurants() {
+
+        final PostgresTaskManagerImpl postgresTaskManagerImpl =
+                PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+        postgresTaskManagerImpl.createTableTask(false);
 
         return "Database Table created";
     }
