@@ -1,11 +1,11 @@
-package com.dhbw.RestaurantsReservation.model.student;
+package com.dhbw.RestaurantsReservation.model.user;
 
-public class Student {
+public class User {
 
     // StudentenInformationen sind komplett ignoriert
     // TODO
     // alle Aktionen müssten Datenbank-Aktionen mit einschließen
-    // StudentManager schreiben
+    // UserManager schreiben
     // TaskManager anpassen, so dass er den Student auch nutzt
     //
 
@@ -14,7 +14,7 @@ public class Student {
     private String loginedInToken;
 
 
-    public Student(String firstName, String lastName) {
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

@@ -1,7 +1,7 @@
 package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
-import com.dhbw.RestaurantsReservation.model.student.Student;
+import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
 import org.apache.commons.dbcp.BasicDataSource;
 
@@ -41,7 +41,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
 
     @Override
-    public Collection<Task> getAllTasks(Student student) {
+    public Collection<Task> getAllTasks(User user) {
 
         List<Task> tasks = new ArrayList<>();
         Statement stmt = null;
@@ -77,7 +77,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
     }
 
     @Override
-    public void addTask(Task task, Student student) {
+    public void addTask(Task task, User user) {
 
         Statement stmt = null;
         Connection connection = null;

@@ -1,6 +1,6 @@
 package com.dhbw.RestaurantsReservation.dataManager;
 
-public interface StudentManager {
+public interface UserManager {
 
     // getAllStudents, getSpecificStudent, logStudentOn, logStudentOff, ...
 
