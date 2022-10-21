@@ -7,6 +7,7 @@ import java.util.Collection;
 
 public interface TaskManager {
 
+
     Collection<Task> getAllTasks(User user);
     void addTask(Task task, User user);
 
