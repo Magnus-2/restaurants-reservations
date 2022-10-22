@@ -1,5 +1,6 @@
 package com.dhbw.RestaurantsReservation.dataManager;
 
+import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
 
@@ -10,6 +11,8 @@ public interface TaskManager {
 
     Collection<Task> getAllTasks(User user);
     void addTask(Task task, User user);
+    Collection<Restaurant> getAllRestaurants();
+    void addRestaurant(Restaurant restaurant);
 
     // TODO
     // removeTask, getTasksInOrder, getTaskByTaskID, ...

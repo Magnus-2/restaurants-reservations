@@ -1,6 +1,7 @@
 package com.dhbw.RestaurantsReservation;
 
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.alexa.AlexaRO;
 import com.dhbw.RestaurantsReservation.model.alexa.OutputSpeechRO;
 import com.dhbw.RestaurantsReservation.model.alexa.ResponseRO;
@@ -92,13 +93,13 @@ public class MappingController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
-    public Task createTaskRestaurants(@RequestBody Task task) {
+    public Restaurant createTaskRestaurants(@RequestBody Restaurant restaurant) {
 
         TaskList taskList = new TaskList(
                 new User("me", "ignore")
         );
-        taskList.addTask(task);
-        return task;
+        taskList.addRestaurant(restaurant);
+        return restaurant;
     }
 
 

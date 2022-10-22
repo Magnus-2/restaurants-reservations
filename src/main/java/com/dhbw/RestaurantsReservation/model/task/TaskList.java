@@ -2,6 +2,7 @@ package com.dhbw.RestaurantsReservation.model.task;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.user.User;
 
 
@@ -40,6 +41,7 @@ public class TaskList {
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		taskManager.addTask(task, new User("me", "me"));
 
+
 		// Region euCentral = Region.getRegion(Regions.US_EAST_1);
 		// sqs.setRegion(euCentral);
         // .withDelaySeconds(1);    
@@ -55,6 +57,12 @@ public class TaskList {
 */	
 		
 		
+	}
+
+	public void addRestaurant (Restaurant restaurant){
+		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		taskManager.addRestaurant(restaurant);
+		//, new RestaurantUser("me", "me") eintragen fall es nicht klappt
 	}
 
 

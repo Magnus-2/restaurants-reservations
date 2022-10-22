@@ -1,6 +1,7 @@
 package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
 import org.apache.commons.dbcp.BasicDataSource;
@@ -108,7 +109,6 @@ public class PostgresTaskManagerImpl implements TaskManager {
     }
 
 
-
     public void createTableTask(Boolean chooser) {
 
         // Be carefull: It deletes data if table already exists.
@@ -181,4 +181,80 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
         }
     }
+
+
+    @Override
+    public Collection<Restaurant> getAllRestaurants() {
+        List<Restaurant> restauranttasks = new ArrayList<>();
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM restauranttasks");
+            while (rs.next()) {
+                restauranttasks.add(
+                        new Restaurant(
+                                rs.getString("rName"),
+                                rs.getInt("rSeats"),
+                                rs.getInt("rZipcode"),
+                                rs.getString("rAddress"),
+                                rs.getString("rCategory"),
+                                rs.getInt("rPhone"),
+                                rs.getString("rEmail"),
+                                rs.getString("rPassword")
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return restauranttasks;
+    }
+
+    @Override
+    public void addRestaurant(Restaurant restaurant) {
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            String udapteSQL = "INSERT into restauranttasks (rName, rSeats, rZipcode, rAddress," +
+                    "rCategory, rPhone, rEmail, rPassword) VALUES (" +
+                    "'" + restaurant.getrName() + "', " +
+                    "'" + restaurant.getrSeats() + "', " +
+                    "'" + restaurant.getrZipcode() + "', " +
+                    "'" + restaurant.getrAddress() + "', " +
+                    "'" + restaurant.getrCategory() + "', " +
+                    "'" + restaurant.getrPhone() + "', " +
+                    "'" + restaurant.getrEmail() + "', " +
+                    "'" + restaurant.getrPassword() + "')";
+
+            stmt.executeUpdate(udapteSQL);
+
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
