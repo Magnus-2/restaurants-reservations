@@ -153,10 +153,10 @@ public class PostgresTaskManagerImpl implements TaskManager {
                 connection = basicDataSource.getConnection();
                 stmt = connection.createStatement();
 
-                String dropTable = "DROP TABLE IF EXISTS restaurantstasks";
+                String dropTable = "DROP TABLE IF EXISTS restauranttasks";
                 stmt.executeUpdate(dropTable);
 
-                String createTable = "CREATE TABLE restaurantstasks (" +
+                String createTable = "CREATE TABLE restauranttasks (" +
                         "id SERIAL PRIMARY KEY, " +
                         "rName varchar(100) NOT NULL, " +
                         "rSeats int NOT NULL, " +
