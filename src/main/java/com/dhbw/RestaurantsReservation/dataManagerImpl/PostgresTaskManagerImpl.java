@@ -116,14 +116,15 @@ public class PostgresTaskManagerImpl implements TaskManager {
         Statement stmt = null;
         Connection connection = null;
 
-        if (chooser){
+        if (chooser== true){
             // if chooser == ture an usertable is created
 
             try {
                 connection = basicDataSource.getConnection();
                 stmt = connection.createStatement();
 
-                String dropTable = "DROP TABLE IF EXISTS usertasks";
+                String dropTable = "DROP TABLE IF EXISTS tasks";
+                //hier gegebenen Falls wieder auf usertasks ändern
                 stmt.executeUpdate(dropTable);
 
                 String createTable = "CREATE TABLE usertasks (" +
