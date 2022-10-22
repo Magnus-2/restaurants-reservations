@@ -75,7 +75,7 @@ public class MappingController {
 
 
 
-    @GetMapping("/task/allRestaurants")
+    @GetMapping("/allRestaurants")
     public TaskList getTasksRestaurants(@RequestParam(value = "name", defaultValue = "Restaurants") String name) {
 
 
@@ -90,7 +90,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/Restaurants",
+            path = "/task/Restaurants",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
