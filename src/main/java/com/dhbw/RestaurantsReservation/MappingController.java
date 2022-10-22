@@ -90,7 +90,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task/Restaurants",
+            path = "/Restaurants",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
