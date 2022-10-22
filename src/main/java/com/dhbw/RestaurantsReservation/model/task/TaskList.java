@@ -9,23 +9,47 @@ import com.dhbw.RestaurantsReservation.model.user.User;
 import java.util.Collection;
 
 public class TaskList {
-	
+
+	private  Restaurant restaurant;
 	private User user;
 	private Collection<Task> usertasks;
+	private Collection<Restaurant> restauranttasks;
 
 	public TaskList() { }
 
 	public TaskList(User user) {
 		this.user = user;
 	}
+	public TaskList(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
 
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+
+
+	/*public Collection<Restaurant> getRestaurants(){
+		return restauranttasks;
+	}
+	//Wird bisher noch nicht gebraucht theoretisch
+
+
+	public Restaurant getRestaurant(){
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
+	}
+
+	 */
+
 
 	public Collection<Task> getTasks() {
 		return usertasks;
@@ -66,4 +90,8 @@ public class TaskList {
 	}
 
 
+	public void setRestaurant() {
+		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		restauranttasks = taskManager.getAllRestaurants();
+	}
 }
