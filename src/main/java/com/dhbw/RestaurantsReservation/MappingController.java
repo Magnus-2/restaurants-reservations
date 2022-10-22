@@ -75,7 +75,7 @@ public class MappingController {
 
 
 
-    @GetMapping("/allRestaurants")
+    @GetMapping("/task/allRestaurants")
     public TaskList getTasksRestaurants(@RequestParam(value = "name", defaultValue = "Restaurants") String name) {
 
 
