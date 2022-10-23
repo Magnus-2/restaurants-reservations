@@ -186,24 +186,24 @@ public class PostgresTaskManagerImpl implements TaskManager {
     @Override
     public Collection<Restaurant> getAllRestaurants() {
         List<Restaurant> restauranttasks = new ArrayList<>();
-        Statement stmt = null;
-        Connection connection = null;
+        Statement stmtr = null;
+        Connection connectionr = null;
 
         try {
-            connection = basicDataSource.getConnection();
-            stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM restauranttasks");
-            while (rs.next()) {
+            connectionr = basicDataSource.getConnection();
+            stmtr = connectionr.createStatement();
+            ResultSet rsr = stmtr.executeQuery("SELECT * FROM restauranttasks");
+            while (rsr.next()) {
                 restauranttasks.add(
                         new Restaurant(
-                                rs.getString("rName"),
-                                rs.getInt("rSeats"),
-                                rs.getInt("rZipcode"),
-                                rs.getString("rAddress"),
-                                rs.getString("rCategory"),
-                                rs.getInt("rPhone"),
-                                rs.getString("rEmail"),
-                                rs.getString("rPassword")
+                                rsr.getString("rName"),
+                                rsr.getInt("rSeats"),
+                                rsr.getInt("rZipcode"),
+                                rsr.getString("rAddress"),
+                                rsr.getString("rCategory"),
+                                rsr.getInt("rPhone"),
+                                rsr.getString("rEmail"),
+                                rsr.getString("rPassword")
                         )
                 );
             }
@@ -212,8 +212,8 @@ public class PostgresTaskManagerImpl implements TaskManager {
         }
 
         try {
-            stmt.close();
-            connection.close();
+            stmtr.close();
+            connectionr.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
