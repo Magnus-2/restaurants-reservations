@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.mosbach'
+group = 'com.dhbw'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
