@@ -20,6 +20,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
     String username = "ftjfbakovepexz";
     String password = "11d2adc8b6760fa9484ab4de1a456e6fe9f3e6856f4ffb83a9fa667558b80d86";
     BasicDataSource basicDataSource;
+    BasicDataSource basicDataSource2;
 
     static PostgresTaskManagerImpl postgresTaskManager = null;
 
@@ -28,6 +29,11 @@ public class PostgresTaskManagerImpl implements TaskManager {
         basicDataSource.setUrl(databaseURL);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
+
+        basicDataSource2 = new BasicDataSource();
+        basicDataSource2.setUrl(databaseURL);
+        basicDataSource2.setUsername(username);
+        basicDataSource2.setPassword(password);
     }
 
     static public PostgresTaskManagerImpl getPostgresTaskManagerImpl() {
@@ -152,7 +158,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
             Statement stmtr = null;
             Connection connectionr = null;
             try {
-                connectionr = basicDataSource.getConnection();
+                connectionr = basicDataSource2.getConnection();
                 stmtr = connectionr.createStatement();
 
                 String dropTable = "DROP TABLE IF EXISTS restauranttasks";
@@ -192,7 +198,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         Connection connectionr = null;
 
         try {
-            connectionr = basicDataSource.getConnection();
+            connectionr = basicDataSource2.getConnection();
             stmtr = connectionr.createStatement();
             ResultSet rsr = stmtr.executeQuery("SELECT * FROM restauranttasks");
             while (rsr.next()) {
@@ -230,7 +236,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         Connection connectionr = null;
 
         try {
-            connectionr = basicDataSource.getConnection();
+            connectionr = basicDataSource2.getConnection();
             stmtr = connectionr.createStatement();
             String udapteSQL = "INSERT into restauranttasks (rName, rSeats, rZipcode, rAddress," +
                     "rCategory, rPhone, rEmail, rPassword) VALUES (" +
