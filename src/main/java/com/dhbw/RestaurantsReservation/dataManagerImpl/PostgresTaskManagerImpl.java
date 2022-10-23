@@ -113,12 +113,12 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
         // Be carefull: It deletes data if table already exists.
         //
-        Statement stmt = null;
-        Connection connection = null;
+
 
         if (chooser== true){
             // if chooser == ture an usertable is created
-
+            Statement stmt = null;
+            Connection connection = null;
             try {
                 connection = basicDataSource.getConnection();
                 stmt = connection.createStatement();
@@ -149,12 +149,14 @@ public class PostgresTaskManagerImpl implements TaskManager {
         }
         else {
             //if chooser == false a restauranttable is created
+            Statement stmtr = null;
+            Connection connectionr = null;
             try {
-                connection = basicDataSource.getConnection();
-                stmt = connection.createStatement();
+                connectionr = basicDataSource.getConnection();
+                stmtr = connectionr.createStatement();
 
                 String dropTable = "DROP TABLE IF EXISTS restauranttasks";
-                stmt.executeUpdate(dropTable);
+                stmtr.executeUpdate(dropTable);
 
                 String createTable = "CREATE TABLE restauranttasks (" +
                         "id SERIAL PRIMARY KEY, " +
@@ -166,13 +168,13 @@ public class PostgresTaskManagerImpl implements TaskManager {
                         "rPhone int NOT NULL, " +
                         "rEmail varchar(250) NOT NULL, " +
                         "rPassword varchar(250) NOT NULL)";
-                stmt.executeUpdate(createTable);
+                stmtr.executeUpdate(createTable);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             try {
-                stmt.close();
-                connection.close();
+                stmtr.close();
+                connectionr.close();
             } catch (SQLException e) {
                 e.printStackTrace();
 
