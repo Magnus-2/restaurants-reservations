@@ -226,12 +226,12 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
     @Override
     public void addRestaurant(Restaurant restaurant) {
-        Statement stmt = null;
-        Connection connection = null;
+        Statement stmtr = null;
+        Connection connectionr = null;
 
         try {
-            connection = basicDataSource.getConnection();
-            stmt = connection.createStatement();
+            connectionr = basicDataSource.getConnection();
+            stmtr = connectionr.createStatement();
             String udapteSQL = "INSERT into restauranttasks (rName, rSeats, rZipcode, rAddress," +
                     "rCategory, rPhone, rEmail, rPassword) VALUES (" +
                     "'" + restaurant.getrName() + "', " +
@@ -243,16 +243,16 @@ public class PostgresTaskManagerImpl implements TaskManager {
                     "'" + restaurant.getrEmail() + "', " +
                     "'" + restaurant.getrPassword() + "')";
 
-            stmt.executeUpdate(udapteSQL);
+            stmtr.executeUpdate(udapteSQL);
 
-            stmt.close();
-            connection.close();
+            stmtr.close();
+            connectionr.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
-            stmt.close();
-            connection.close();
+            stmtr.close();
+            connectionr.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
