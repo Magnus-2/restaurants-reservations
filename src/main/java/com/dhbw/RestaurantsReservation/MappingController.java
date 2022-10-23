@@ -97,7 +97,8 @@ public class MappingController {
     public Restaurant createRestaurants(@RequestBody Restaurant restaurant) {
 
         TaskList restaurantList = new TaskList(
-                new Restaurant()
+                new Restaurant("Name", 9, 99999, "Addresse",
+                        "Category",123456789, "E@mail","Password")
         );
         restaurantList.addRestaurant(restaurant);
         return restaurant;
