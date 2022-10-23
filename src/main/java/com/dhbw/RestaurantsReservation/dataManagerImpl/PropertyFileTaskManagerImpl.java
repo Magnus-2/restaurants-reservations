@@ -112,7 +112,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         try {
             properties.load(new FileInputStream(fileName));
 
-            while(properties.containsKey("Restaurant."+ i +".name")) {
+            while(properties.containsKey("Restaurant."+ i +".rName")) {
                 System.out.println("Bin in der list.");
                 restauranttasks.add(
                         new Restaurant(

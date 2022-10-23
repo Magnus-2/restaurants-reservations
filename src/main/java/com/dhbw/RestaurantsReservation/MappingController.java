@@ -76,11 +76,11 @@ public class MappingController {
 
 
     @GetMapping("/task/allRestaurants")
-    public TaskList getTasksRestaurants(@RequestParam(value = "name", defaultValue = "Restaurants") String name) {
+    public TaskList getTasksRestaurants(@RequestParam(value = "name", defaultValue = "Restaurants") String rName) {
 
 
         TaskList restaurantList = new TaskList(
-                new Restaurant(name, 9, 99999, "Addresse",
+                new Restaurant(rName, 9, 99999, "Addresse",
                         "Category",123456789, "E@mail","Password")
         );
         restaurantList.setRestaurant();
