@@ -97,7 +97,7 @@ public class MappingController {
     public Restaurant createTaskRestaurants(@RequestBody Restaurant restaurant) {
 
         TaskList taskList = new TaskList(
-                new User("me", "ignore")
+                new Restaurant()
         );
         taskList.addRestaurant(restaurant);
         return restaurant;
