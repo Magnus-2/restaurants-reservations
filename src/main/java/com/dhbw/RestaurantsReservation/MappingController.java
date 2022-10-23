@@ -50,7 +50,7 @@ public class MappingController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
-    public Task createTaskUser(@RequestBody Task task) {
+    public Task createUser(@RequestBody Task task) {
 
         TaskList taskList = new TaskList(
                                     new User("me", "ignore")
@@ -94,12 +94,12 @@ public class MappingController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
-    public Restaurant createTaskRestaurants(@RequestBody Restaurant restaurant) {
+    public Restaurant createRestaurants(@RequestBody Restaurant restaurant) {
 
-        TaskList taskList = new TaskList(
+        TaskList restaurantList = new TaskList(
                 new Restaurant()
         );
-        taskList.addRestaurant(restaurant);
+        restaurantList.addRestaurant(restaurant);
         return restaurant;
     }
 
