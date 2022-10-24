@@ -271,10 +271,10 @@ public class PostgresTaskManagerImpl implements TaskManager {
             connectionu = basicDataSource2.getConnection();
             stmtu = connectionu.createStatement();
 
-            String dropTable = "DROP TABLE IF EXISTS user";
+            String dropTable = "DROP TABLE IF EXISTS usertable";
             stmtu.executeUpdate(dropTable);
 
-            String createTable = "CREATE TABLE user(" +
+            String createTable = "CREATE TABLE usertable(" +
                     "id SERIAL PRIMARY KEY, " +
                     "firstName varchar(100) NOT NULL, " +
                     "lastName varchar(100) NOT NULL, " +
