@@ -344,6 +344,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
                     "'" + user.getFirstName() + "', " +
                     "'" + user.getLastName() + "', " +
                     "'" + user.getEMail() + "', " +
+                    "'" + user.getPhoneNumber() + "', " +
                     "'" + user.getPassword() + "')";
 
             stmt.executeUpdate(udapteSQL);

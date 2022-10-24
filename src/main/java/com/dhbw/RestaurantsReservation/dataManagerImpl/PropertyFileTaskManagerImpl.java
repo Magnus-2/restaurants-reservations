@@ -223,7 +223,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
                     properties.setProperty("User."+ i.get() + ".lastName", user.getLastName());
                     properties.setProperty("User."+ i.get() + ".eMail", user.getEMail());
                     properties.setProperty("User."+ i.get() + ".phoneNumber", user.getPhoneNumber());
-                    properties.setProperty("User."+ i.get() + ".password",""+ user.getPassword());
+                    properties.setProperty("User."+ i.get() + ".password", user.getPassword());
                 }
         );
         try{
