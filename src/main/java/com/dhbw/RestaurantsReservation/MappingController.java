@@ -107,6 +107,7 @@ public class MappingController {
 
 
     @PostMapping(
+
             path = "/createtable/Restaurants"
     )
     @ResponseStatus(HttpStatus.OK)
