@@ -305,7 +305,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource2.getConnection();
             stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM user");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM usertable");
             while (rs.next()) {
                 usertasks.add(
                         new User(
@@ -340,7 +340,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource2.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into user(firstName, lastName, eMail, phoneNumber, password) VALUES (" +
+            String udapteSQL = "INSERT into usertable(firstName, lastName, eMail, phoneNumber, password) VALUES (" +
                     "'" + user.getFirstName() + "', " +
                     "'" + user.getLastName() + "', " +
                     "'" + user.getEMail() + "', " +
