@@ -96,7 +96,7 @@ public class MappingController {
                 new Restaurant(rName, 9, 99999, "Addresse",
                         "Category",123456789, "E@mail","Password")
         );
-        taskList.setTasks();
+        taskList.setRestaurant();
 
         return taskList;
     }
