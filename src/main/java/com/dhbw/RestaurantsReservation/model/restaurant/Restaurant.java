@@ -6,11 +6,7 @@ package com.dhbw.RestaurantsReservation.model.restaurant;
 
 public class Restaurant {
 
-
-
-
     private String rName = "";
-
 
     private int rSeats = 0;
 
