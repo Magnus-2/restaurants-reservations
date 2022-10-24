@@ -17,7 +17,7 @@ public class User {
     private String loginedInToken;
 
 
-    public User{
+    public User(){
 
     }
 
