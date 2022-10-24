@@ -93,7 +93,7 @@ public class MappingController {
 
 
         TaskList taskList = new TaskList(
-                new User("me", rName)
+                new Restaurant("me", rName)
         );
         taskList.setTasks();
 
