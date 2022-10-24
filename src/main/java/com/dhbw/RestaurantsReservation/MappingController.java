@@ -76,7 +76,7 @@ public class MappingController {
 
 
 
-    @GetMapping("/allRestaurants")
+  /*  @GetMapping("/allRestaurants")
     public TaskList getRestaurants(@RequestParam(value = "name", defaultValue = "Restaurant") String name) {
 
 
@@ -86,8 +86,19 @@ public class MappingController {
         restaurantList.setRestaurant();
 
         return restaurantList;
-    }
+    }*/
 
+    @GetMapping("/allRestaurants")
+    public TaskList getallUser(@RequestParam(value = "name", defaultValue = "User") String name) {
+
+
+        TaskList taskList = new TaskList(
+                new User("me", name)
+        );
+        taskList.setTasks();
+
+        return taskList;
+    }
 
     @PostMapping(
             path = "/Restaurants",
