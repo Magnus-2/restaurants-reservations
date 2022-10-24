@@ -69,7 +69,7 @@ public class MappingController {
 
         final PostgresTaskManagerImpl postgresTaskManagerImpl =
                 PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-        postgresTaskManagerImpl.createTableTask(true);
+        postgresTaskManagerImpl.createTableTask();
 
         return "Database Table created";
     }
@@ -114,7 +114,7 @@ public class MappingController {
 
         final PostgresTaskManagerImpl postgresTaskManagerImpl =
                 PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-        postgresTaskManagerImpl.createTableTask(false);
+        postgresTaskManagerImpl.createTableRestaurant();
 
         return "Database Table created";
     }

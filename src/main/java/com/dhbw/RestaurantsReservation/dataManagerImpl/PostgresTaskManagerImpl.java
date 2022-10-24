@@ -115,13 +115,11 @@ public class PostgresTaskManagerImpl implements TaskManager {
     }
 
 
-    public void createTableTask(Boolean chooser) {
+    public void createTableTask() {
 
         // Be carefull: It deletes data if table already exists.
         //
 
-
-        if (chooser== true){
             // if chooser == ture an usertable is created
             Statement stmt = null;
             Connection connection = null;
@@ -152,44 +150,44 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
             }
 
-        }
-        else {
-            //if chooser == false a restauranttable is created
-            Statement stmtr = null;
-            Connection connectionr = null;
-            try {
-                connectionr = basicDataSource2.getConnection();
-                stmtr = connectionr.createStatement();
-
-                String dropTable = "DROP TABLE IF EXISTS restauranttasks";
-                stmtr.executeUpdate(dropTable);
-
-                String createTable = "CREATE TABLE restauranttasks (" +
-                        "id SERIAL PRIMARY KEY, " +
-                        "rName varchar(100) NOT NULL, " +
-                        "rSeats int NOT NULL, " +
-                        "rZipcode int NOT NULL, " +
-                        "rAddress varchar(250) NOT NULL, " +
-                        "rCategory varchar(250) NOT NULL, " +
-                        "rPhone int NOT NULL, " +
-                        "rEmail varchar(250) NOT NULL, " +
-                        "rPassword varchar(250) NOT NULL)";
-                stmtr.executeUpdate(createTable);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                stmtr.close();
-                connectionr.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-
-
-            }
-
-        }
     }
 
+    public void createTableRestaurant(){
+
+        Statement stmtr = null;
+        Connection connectionr = null;
+        try {
+            connectionr = basicDataSource2.getConnection();
+            stmtr = connectionr.createStatement();
+
+            String dropTable = "DROP TABLE IF EXISTS restaurant";
+            stmtr.executeUpdate(dropTable);
+
+            String createTable = "CREATE TABLE restaurant(" +
+                    "id SERIAL PRIMARY KEY, " +
+                    "rName varchar(100) NOT NULL, " +
+                    "rSeats int NOT NULL, " +
+                    "rZipcode int NOT NULL, " +
+                    "rAddress varchar(250) NOT NULL, " +
+                    "rCategory varchar(250) NOT NULL, " +
+                    "rPhone int NOT NULL, " +
+                    "rEmail varchar(250) NOT NULL, " +
+                    "rPassword varchar(250) NOT NULL)";
+            stmtr.executeUpdate(createTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmtr.close();
+            connectionr.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+
+        }
+
+
+    }
 
     @Override
     public Collection<Restaurant> getAllRestaurants() {
@@ -200,7 +198,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connectionr = basicDataSource2.getConnection();
             stmtr = connectionr.createStatement();
-            ResultSet rsr = stmtr.executeQuery("SELECT * FROM restauranttasks");
+            ResultSet rsr = stmtr.executeQuery("SELECT * FROM restaurant");
             while (rsr.next()) {
                 restauranttasks.add(
                         new Restaurant(
@@ -238,8 +236,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connectionr = basicDataSource2.getConnection();
             stmtr = connectionr.createStatement();
-            String udapteSQL = "INSERT into restauranttasks (rName, rSeats, rZipcode, rAddress," +
-                    "rCategory, rPhone, rEmail, rPassword) VALUES (" +
+            String udapteSQL = "INSERT into restaurant(rName, rSeats, rZipcode, rAddress,rCategory, rPhone, rEmail, rPassword) VALUES (" +
                     "'" + restaurant.getrName() + "', " +
                     "'" + restaurant.getrSeats() + "', " +
                     "'" + restaurant.getrZipcode() + "', " +
