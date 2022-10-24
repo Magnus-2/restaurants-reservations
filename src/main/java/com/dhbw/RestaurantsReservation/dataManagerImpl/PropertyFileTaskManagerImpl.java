@@ -144,6 +144,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         storeAllRestaurants(restauranttasks);
     }
 
+
     public void storeAllRestaurants(Collection<Restaurant> restauranttasks) {
 
         // I am ignoring the student and storing all usertasks to the file
@@ -171,6 +172,68 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
     }
 
+
+    @Override
+    public Collection<User> getAllUsers(User user) {
+
+        // I am ignoring the user and retrieve all restauranttasks from the file
+
+        List<User> usertasks = new ArrayList<>();
+
+        Properties properties = new Properties();
+        int i = 1;
+        try {
+            properties.load(new FileInputStream(fileName));
+
+            while(properties.containsKey("User."+ i +".firstName")) {
+                System.out.println("Bin in der list.");
+                usertasks.add(
+                        new User(
+                                properties.getProperty("User."+ i +".firstName"),
+                                properties.getProperty("User."+ i +".lastName"),
+                                properties.getProperty("User."+ i +".eMail"),
+                                properties.getProperty("User."+ i +".phoneNumber"),
+                                properties.getProperty("User."+ i +".password"))
+                );
+                i++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return usertasks;
+    }
+
+    @Override
+    public void addUser(User user) {
+        Collection<User> usertasks = getAllUsers(user);
+        usertasks.add(user);
+        storeAllUser(usertasks);
+    }
+
+    private void storeAllUser(Collection<User> usertasks) {
+
+        Properties properties = new Properties();
+        AtomicInteger i = new AtomicInteger(0);
+        usertasks.forEach(
+                user -> {
+                    properties.setProperty("User."+ i.incrementAndGet() + ".firstName", user.getFirstName());
+                    properties.setProperty("User."+ i.get() + ".lastName", user.getLastName());
+                    properties.setProperty("User."+ i.get() + ".eMail", user.getEMail());
+                    properties.setProperty("User."+ i.get() + ".phoneNumber", user.getPhoneNumber());
+                    properties.setProperty("User."+ i.get() + ".password",""+ user.getPassword());
+                }
+        );
+        try{
+            properties.store(new FileOutputStream(fileName), "Store data to file.");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 
 
 }

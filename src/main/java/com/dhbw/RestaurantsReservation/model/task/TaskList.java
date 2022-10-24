@@ -13,6 +13,7 @@ public class TaskList {
 	private  Restaurant restaurant;
 	private User user;
 	private Collection<Task> usertasks;
+	private Collection<User> usertask;
 	private Collection<Restaurant> restauranttask;
 
 	public TaskList() { }
@@ -31,6 +32,9 @@ public class TaskList {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public Collection<User> getUsers() {
+		return usertask;
+	}
 
 
 	public Restaurant getRestaurant(){
@@ -39,13 +43,15 @@ public class TaskList {
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
-public Collection <Restaurant> getRTasks(){return restauranttask;}
+	public Collection <Restaurant> getRTasks(){return restauranttask;}
 
 
 
 	public Collection<Task> getTasks() {
 		return usertasks;
 	}
+
+
 
 	public void setTasks() {
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
@@ -56,6 +62,8 @@ public Collection <Restaurant> getRTasks(){return restauranttask;}
 	public void addTask(Task task) {
 		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		taskManager.addTask(task, new User("me", "me"));
+
+
 
 
 		// Region euCentral = Region.getRegion(Regions.US_EAST_1);
@@ -92,4 +100,24 @@ public Collection <Restaurant> getRTasks(){return restauranttask;}
 		TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		restauranttask = restaurantManager.getAllRestaurants(new Restaurant("me", "me"));
 	}
+
+	public void addUser (User user){
+		TaskManager userManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		userManager.addUser(user);
+		//, new RestaurantUser("me", "me") eintragen fall es nicht klappt
+	}
+
+
+
+	public void setUsers() {
+		/*TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		restauranttask = restaurantManager.getAllRestaurants(new Restaurant("rName", 9, 99999,
+				"Addresse","Category",123456789, "E@mail","Password"));*/
+
+
+		TaskManager userManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		usertask = userManager.getAllUsers(new User("me", "me"));
+	}
+
+
 }

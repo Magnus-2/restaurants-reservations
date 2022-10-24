@@ -11,8 +11,12 @@ public interface TaskManager {
 
     Collection<Task> getAllTasks(User user);
     void addTask(Task task, User user);
+
     Collection<Restaurant> getAllRestaurants(Restaurant restaurant);
     void addRestaurant(Restaurant restaurant);
+
+    Collection<User> getAllUsers(User user);
+    void addUser(User user);
 
     // TODO
     // removeTask, getTasksInOrder, getTaskByTaskID, ...

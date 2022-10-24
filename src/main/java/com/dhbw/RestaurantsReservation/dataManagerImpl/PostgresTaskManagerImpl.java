@@ -262,4 +262,104 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
     }
 
+
+    public void createTableUser() {
+
+        Statement stmt = null;
+        Connection connection = null;
+        try {
+            connection = basicDataSource2.getConnection();
+            stmt = connection.createStatement();
+
+            String dropTable = "DROP TABLE IF EXISTS user";
+            stmt.executeUpdate(dropTable);
+
+            String createTable = "CREATE TABLE user(" +
+                    "id SERIAL PRIMARY KEY, " +
+                    "firstName varchar(100) NOT NULL, " +
+                    "lastName varchar(100) NOT NULL, " +
+                    "eMail varchar(250) NOT NULL, " +
+                    "phoneNumber varchar(50) NOT NULL, " +
+                    "password varchar(250) NOT NULL)";
+            stmt.executeUpdate(createTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+
+        }
+
+    }
+
+    @Override
+    public Collection<User> getAllUsers(User user) {
+        List<User> usertasks = new ArrayList<>();
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource2.getConnection();
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user");
+            while (rs.next()) {
+                usertasks.add(
+                        new User(
+                                rs.getString("firstName"),
+                                rs.getString("lastName"),
+                                rs.getString("eMail"),
+                                rs.getString("phoneNumber"),
+                                rs.getString("password")
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return usertasks;
+    }
+
+    @Override
+    public void addUser(User user) {
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource2.getConnection();
+            stmt = connection.createStatement();
+            String udapteSQL = "INSERT into user(firstName, lastName, eMail, phoneNumber, password) VALUES (" +
+                    "'" + user.getFirstName() + "', " +
+                    "'" + user.getLastName() + "', " +
+                    "'" + user.getEMail() + "', " +
+                    "'" + user.getPassword() + "')";
+
+            stmt.executeUpdate(udapteSQL);
+
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -51,7 +51,7 @@ public class MappingController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
-    public Task createUser(@RequestBody Task task) {
+    public Task createTaskUser(@RequestBody Task task) {
 
         TaskList taskList = new TaskList(
                                     new User("me", "ignore")
@@ -74,19 +74,49 @@ public class MappingController {
         return "Database Table created";
     }
 
+    @GetMapping("/allUser")
+    public TaskList getUser(@RequestParam(value = "uName", defaultValue = "User") String uName) {
 
 
-  /*  @GetMapping("/allRestaurants")
-    public TaskList getRestaurants(@RequestParam(value = "name", defaultValue = "Restaurant") String name) {
-
-
-        TaskList restaurantList = new TaskList(
-                new Restaurant(name, "E@mail")
+        TaskList userList = new TaskList(
+                new User("me", uName)
         );
-        restaurantList.setRestaurant();
+        userList.setUsers();
 
-        return restaurantList;
-    }*/
+        return userList;
+    }
+
+
+
+    @PostMapping(
+            path = "/User",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public User createUser(@RequestBody User user) {
+
+        TaskList taskList = new TaskList(
+                new User("firstName","lastName","eMail",
+                        "phoneNumber","password")
+        );
+        taskList.addUser(user);
+        return user;
+    }
+
+
+    @PostMapping(
+            path = "/createtable/User"
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public String createTableUser() {
+
+        final PostgresTaskManagerImpl postgresTaskManagerImpl =
+                PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+        postgresTaskManagerImpl.createTableUser();
+
+        return "Database Table created";
+    }
+
 
     @GetMapping("/allRestaurants")
     public TaskList getallUser(@RequestParam(value = "rName", defaultValue = "Restaurant") String rName) {
@@ -123,7 +153,7 @@ public class MappingController {
             path = "/createtable/Restaurants"
     )
     @ResponseStatus(HttpStatus.OK)
-    public String createTaskRestaurants() {
+    public String createTableRestaurants() {
 
         final PostgresTaskManagerImpl postgresTaskManagerImpl =
                 PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
