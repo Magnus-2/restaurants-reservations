@@ -101,7 +101,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
 
     @Override
-    public Collection<Restaurant> getAllRestaurants() {
+    public Collection<Restaurant> getAllRestaurants(Restaurant restaurant) {
 
         // I am ignoring the user and retrieve all restauranttasks from the file
 
@@ -139,7 +139,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
     @Override
     public void addRestaurant(Restaurant restaurant) {
-        Collection<Restaurant> restauranttasks = getAllRestaurants();
+        Collection<Restaurant> restauranttasks = getAllRestaurants(restaurant);
         restauranttasks.add(restaurant);
         storeAllRestaurants(restauranttasks);
     }

@@ -13,7 +13,7 @@ public class TaskList {
 	private  Restaurant restaurant;
 	private User user;
 	private Collection<Task> usertasks;
-	private Collection<Restaurant> restauranttasks;
+	private Collection<Restaurant> restauranttask;
 
 	public TaskList() { }
 
@@ -91,7 +91,8 @@ public class TaskList {
 
 
 	public void setRestaurant() {
-		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		restauranttasks = taskManager.getAllRestaurants();
+		TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		restauranttask = restaurantManager.getAllRestaurants(new Restaurant("rName", 9, 99999,
+				"Addresse","Category",123456789, "E@mail","Password"));
 	}
 }

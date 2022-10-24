@@ -190,7 +190,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
     }
 
     @Override
-    public Collection<Restaurant> getAllRestaurants() {
+    public Collection<Restaurant> getAllRestaurants(Restaurant restaurant) {
         List<Restaurant> restauranttasks = new ArrayList<>();
         Statement stmtr = null;
         Connection connectionr = null;
