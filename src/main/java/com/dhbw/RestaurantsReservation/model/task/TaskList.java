@@ -33,22 +33,14 @@ public class TaskList {
 	}
 
 
-
-	/*public Collection<Restaurant> getRestaurants(){
-		return restauranttasks;
-	}
-	//Wird bisher noch nicht gebraucht theoretisch
-
-
 	public Restaurant getRestaurant(){
 		return restaurant;
 	}
-
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
+public Collection <Restaurant> getRTasks(){return restauranttask;}
 
-	 */
 
 
 	public Collection<Task> getTasks() {
@@ -91,8 +83,11 @@ public class TaskList {
 
 
 	public void setRestaurant() {
-		TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		/*TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		restauranttask = restaurantManager.getAllRestaurants(new Restaurant("rName", 9, 99999,
-				"Addresse","Category",123456789, "E@mail","Password"));
+				"Addresse","Category",123456789, "E@mail","Password"));*/
+
+		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		usertasks = taskManager.getAllTasks(new User("me", "me"));
 	}
 }
