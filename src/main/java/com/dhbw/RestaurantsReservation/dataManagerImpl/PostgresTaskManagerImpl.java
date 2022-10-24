@@ -265,14 +265,14 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
     public void createTableUser() {
 
-        Statement stmt = null;
-        Connection connection = null;
+        Statement stmtu = null;
+        Connection connectionu = null;
         try {
-            connection = basicDataSource2.getConnection();
-            stmt = connection.createStatement();
+            connectionu = basicDataSource2.getConnection();
+            stmtu = connectionu.createStatement();
 
             String dropTable = "DROP TABLE IF EXISTS user";
-            stmt.executeUpdate(dropTable);
+            stmtu.executeUpdate(dropTable);
 
             String createTable = "CREATE TABLE user(" +
                     "id SERIAL PRIMARY KEY, " +
@@ -281,13 +281,13 @@ public class PostgresTaskManagerImpl implements TaskManager {
                     "eMail varchar(250) NOT NULL, " +
                     "phoneNumber varchar(50) NOT NULL, " +
                     "password varchar(250) NOT NULL)";
-            stmt.executeUpdate(createTable);
+            stmtu.executeUpdate(createTable);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
-            stmt.close();
-            connection.close();
+            stmtu.close();
+            connectionu.close();
         } catch (SQLException e) {
             e.printStackTrace();
 

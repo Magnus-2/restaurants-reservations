@@ -74,6 +74,10 @@ public class MappingController {
         return "Database Table created";
     }
 
+
+
+
+
     @GetMapping("/allUser")
     public TaskList getUser(@RequestParam(value = "uName", defaultValue = "User") String uName) {
 
@@ -85,8 +89,6 @@ public class MappingController {
 
         return userList;
     }
-
-
 
     @PostMapping(
             path = "/User",
