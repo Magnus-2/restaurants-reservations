@@ -21,10 +21,7 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+
 
     public User (String firstName, String lastName, String eMail, String phoneNumber, String password){
         super();
@@ -33,6 +30,11 @@ public class User {
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
         this.password = password;
+    }
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
