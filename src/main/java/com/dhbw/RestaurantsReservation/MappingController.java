@@ -91,7 +91,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task/Restaurants",
+            path = "/Restaurants",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
@@ -107,7 +107,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/task/createtable/Restaurants"
+            path = "/createtable/Restaurants"
     )
     @ResponseStatus(HttpStatus.OK)
     public String createTaskRestaurants() {
