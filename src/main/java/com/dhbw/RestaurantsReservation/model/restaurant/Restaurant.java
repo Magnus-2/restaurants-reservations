@@ -14,20 +14,28 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     @Column(name = "rName")
+    @Getter @Setter
     private String rName = "";
     @Column(name = "rSeats")
+    @Getter @Setter
     private int rSeats = 0;
     @Column(name = "rZipcode")
+    @Getter @Setter
     private int rZipcode = 0;
     @Column(name = "rAddress")
+    @Getter @Setter
     private String rAddress = "";
     @Column(name = "rCategory")
+    @Getter @Setter
     private String rCategory ="";
     @Column(name = "rPhone")
+    @Getter @Setter
     private int rPhone = 0;
     @Column(name = "rEmail")
+    @Getter @Setter
     private String rEmail = "";
     @Column(name = "rPassword")
+    @Getter @Setter
     private String rPassword = "";
 
     public Restaurant(){
