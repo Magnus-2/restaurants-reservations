@@ -90,6 +90,6 @@ public Collection <Restaurant> getRTasks(){return restauranttask;}
 
 
 		TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		usertasks = restaurantManager.getAllTasks(new User("me", "me"));
+		restauranttask = restaurantManager.getAllRestaurants(new Restaurant("me", "me"));
 	}
 }
