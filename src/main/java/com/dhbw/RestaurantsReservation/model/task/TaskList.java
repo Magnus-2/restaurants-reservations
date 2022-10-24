@@ -89,7 +89,7 @@ public Collection <Restaurant> getRTasks(){return restauranttask;}
 				"Addresse","Category",123456789, "E@mail","Password"));*/
 
 
-		TaskManager taskManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		usertasks = taskManager.getAllTasks(new User("me", "me"));
+		TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		usertasks = restaurantManager.getAllTasks(new User("me", "me"));
 	}
 }
