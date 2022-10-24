@@ -89,7 +89,7 @@ public class MappingController {
     }*/
 
     @GetMapping("/allRestaurants")
-    public TaskList getallUser(@RequestParam(value = "name", defaultValue = "User") String name) {
+    public TaskList getallUser(@RequestParam(value = "name", defaultValue = "Restaurant") String name) {
 
 
         TaskList taskList = new TaskList(
