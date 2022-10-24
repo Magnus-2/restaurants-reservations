@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "restauranttable")
 public class Restaurant {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
