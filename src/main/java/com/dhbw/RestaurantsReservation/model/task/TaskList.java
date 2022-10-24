@@ -82,6 +82,7 @@ public Collection <Restaurant> getRTasks(){return restauranttask;}
 	}
 
 
+
 	public void setRestaurant() {
 		/*TaskManager restaurantManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		restauranttask = restaurantManager.getAllRestaurants(new Restaurant("rName", 9, 99999,
