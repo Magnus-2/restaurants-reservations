@@ -44,6 +44,11 @@ public class Restaurant {
         this.rPassword = rPassword;
     }
 
+    public Restaurant(String rName, String rEmail){
+        this.rName = rName;
+        this.rEmail = rEmail;
+    }
+
     public String getrName() {
         return rName;
     }

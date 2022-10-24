@@ -81,8 +81,7 @@ public class MappingController {
 
 
         TaskList restaurantList = new TaskList(
-                new Restaurant(name, 9, 99999, "Addresse",
-                        "Category",123456789, "E@mail","Password")
+                new Restaurant(name, "E@mail")
         );
         restaurantList.setRestaurant();
 
