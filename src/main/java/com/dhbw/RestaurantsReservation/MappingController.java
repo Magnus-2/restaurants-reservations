@@ -78,7 +78,7 @@ public class MappingController {
 
 
 
-    @GetMapping("/allUser")
+    @GetMapping("/User/all")
     public TaskList getUser(@RequestParam(value = "uName", defaultValue = "User") String uName) {
 
 
