@@ -11,7 +11,7 @@ public class User {
 
     private String firstName;
     private String lastName;
-    private String eMail;
+    private String uEMail;
     private String phoneNumber;
     private String password;
    /*private String loginedInToken;*/
@@ -23,18 +23,18 @@ public class User {
 
 
 
-    public User (String firstName, String lastName, String eMail, String phoneNumber, String password){
+    public User (String firstName, String lastName, String uEMail, String phoneNumber, String password){
         super();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.eMail = eMail;
+        this.uEMail = uEMail;
         this.phoneNumber = phoneNumber;
         this.password = password;
     }
 
 
-    public User (String eMail, String password){
-        this.eMail = eMail;
+    public User (String uEMail, String password){
+        this.uEMail = uEMail;
         this.password = password;
     }
 
@@ -55,10 +55,10 @@ public class User {
 
 
     public String getEMail() {
-        return eMail;
+        return uEMail;
     }
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
+    public void setEMail(String uEMail) {
+        this.uEMail = uEMail;
     }
 
 

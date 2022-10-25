@@ -278,7 +278,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
                     "id SERIAL PRIMARY KEY, " +
                     "firstName varchar(100) NOT NULL, " +
                     "lastName varchar(100) NOT NULL, " +
-                    "eMail varchar(250) NOT NULL, " +
+                    "uEMail varchar(250) NOT NULL, " +
                     "phoneNumber varchar(50) NOT NULL, " +
                     "password varchar(250) NOT NULL)";
             stmtu.executeUpdate(createTable);
@@ -298,7 +298,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
     @Override
     public Collection<User> getAllUsers(User user) {
-        List<User> usertasks = new ArrayList<>();
+        List<User> usertask = new ArrayList<>();
         Statement stmt = null;
         Connection connection = null;
 
@@ -307,11 +307,11 @@ public class PostgresTaskManagerImpl implements TaskManager {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM usertable");
             while (rs.next()) {
-                usertasks.add(
+                usertask.add(
                         new User(
                                 rs.getString("firstName"),
                                 rs.getString("lastName"),
-                                rs.getString("eMail"),
+                                rs.getString("uEMail"),
                                 rs.getString("phoneNumber"),
                                 rs.getString("password")
                         )
@@ -329,7 +329,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         }
 
 
-        return usertasks;
+        return usertask;
     }
 
     @Override
@@ -340,7 +340,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource2.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into usertable(firstName, lastName, eMail, phoneNumber, password) VALUES (" +
+            String udapteSQL = "INSERT into usertable(firstName, lastName, uEMail, phoneNumber, password) VALUES (" +
                     "'" + user.getFirstName() + "', " +
                     "'" + user.getLastName() + "', " +
                     "'" + user.getEMail() + "', " +

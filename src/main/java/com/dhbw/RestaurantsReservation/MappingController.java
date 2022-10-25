@@ -97,11 +97,11 @@ public class MappingController {
     @ResponseStatus(HttpStatus.OK)
     public User createUser(@RequestBody User user) {
 
-        TaskList taskList = new TaskList(
+        TaskList userList = new TaskList(
                 new User("firstName","lastName","eMail",
                         "phoneNumber","password")
         );
-        taskList.addUser(user);
+        userList.addUser(user);
         return user;
     }
 
