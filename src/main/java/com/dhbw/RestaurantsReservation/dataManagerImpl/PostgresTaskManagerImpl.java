@@ -278,7 +278,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
                     "id SERIAL PRIMARY KEY, " +
                     "firstName varchar(100) NOT NULL, " +
                     "lastName varchar(100) NOT NULL, " +
-                    "uEMail varchar(250) NOT NULL, " +
+                    "email varchar(250) NOT NULL, " +
                     "phoneNumber varchar(50) NOT NULL, " +
                     "password varchar(250) NOT NULL)";
             stmtu.executeUpdate(createTable);
@@ -311,7 +311,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
                         new User(
                                 rs.getString("firstName"),
                                 rs.getString("lastName"),
-                                rs.getString("uEMail"),
+                                rs.getString("email"),
                                 rs.getString("phoneNumber"),
                                 rs.getString("password")
                         )
@@ -340,7 +340,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connection = basicDataSource2.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into usertable(firstName, lastName, uEMail, phoneNumber, password) VALUES (" +
+            String udapteSQL = "INSERT into usertable(firstName, lastName, email, phoneNumber, password) VALUES (" +
                     "'" + user.getFirstName() + "', " +
                     "'" + user.getLastName() + "', " +
                     "'" + user.getEMail() + "', " +

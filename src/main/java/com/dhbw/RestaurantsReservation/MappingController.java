@@ -98,7 +98,7 @@ public class MappingController {
     public User createUser(@RequestBody User user) {
 
         TaskList userList = new TaskList(
-                new User("firstName","lastName","eMail",
+                new User("firstName","lastName","email",
                         "phoneNumber","password")
         );
         userList.addUser(user);

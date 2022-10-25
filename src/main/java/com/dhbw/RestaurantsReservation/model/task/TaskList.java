@@ -116,7 +116,7 @@ public class TaskList {
 
 
 		TaskManager userManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
-		usertask = userManager.getAllUsers(new User("eMail", "password"));
+		usertask = userManager.getAllUsers(new User("email", "password"));
 	}
 
 
