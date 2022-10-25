@@ -120,7 +120,7 @@ public class MappingController {
     }
 
 
-    @GetMapping("/allRestaurants")
+    @GetMapping("/Restaurant/all")
     public TaskList getallUser(@RequestParam(value = "rName", defaultValue = "Restaurant") String rName) {
 
 
@@ -135,7 +135,7 @@ public class MappingController {
     }
 
     @PostMapping(
-            path = "/Restaurants",
+            path = "/Restaurant",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
     )
     @ResponseStatus(HttpStatus.OK)
@@ -152,7 +152,7 @@ public class MappingController {
 
     @PostMapping(
 
-            path = "/createtable/Restaurants"
+            path = "/createtable/Restaurant"
     )
     @ResponseStatus(HttpStatus.OK)
     public String createTableRestaurants() {
