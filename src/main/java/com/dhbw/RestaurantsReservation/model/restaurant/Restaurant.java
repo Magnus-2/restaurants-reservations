@@ -12,15 +12,11 @@ public class Restaurant {
 
     private int rZipcode = 0;
 
-
     private String rAddress = "";
-
 
     private String rCategory ="";
 
-
     private int rPhone = 0;
-
 
     private String rEmail = "";
 

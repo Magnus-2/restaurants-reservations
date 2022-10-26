@@ -1,6 +1,7 @@
 package com.dhbw.RestaurantsReservation;
 
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.reservations.Reservations;
 import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.alexa.AlexaRO;
 import com.dhbw.RestaurantsReservation.model.alexa.OutputSpeechRO;
@@ -121,7 +122,7 @@ public class MappingController {
 
 
     @GetMapping("/Restaurant/all")
-    public TaskList getallUser(@RequestParam(value = "rName", defaultValue = "Restaurant") String rName) {
+    public TaskList getallRestaurants(@RequestParam(value = "rName", defaultValue = "Restaurant") String rName) {
 
 
         TaskList taskList = new TaskList(
@@ -164,6 +165,49 @@ public class MappingController {
         return "Database Table created";
     }
 
+
+
+    @GetMapping("/Reservations/all")
+    public TaskList getallReservations(@RequestParam(value = "firstName", defaultValue = "Reservations") String firstName) {
+
+
+        TaskList restaurantsList = new TaskList(
+                new Reservations(firstName, "rName")
+        );
+
+        restaurantsList.setReservation();
+
+        return restaurantsList;
+    }
+
+    @PostMapping(
+            path = "/Reservations",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public Reservations createReservations (@RequestBody Reservations reservations) {
+
+        TaskList reservationsList = new TaskList(
+                new Reservations("Fristname", "Restaurantname")
+        );
+        reservationsList.addReservations(reservations);
+        return reservations;
+    }
+
+
+    @PostMapping(
+
+            path = "/createtable/Reservations"
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public String createTableReservations() {
+
+        final PostgresTaskManagerImpl postgresTaskManagerImpl =
+                PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+        postgresTaskManagerImpl.createTableReservations();
+
+        return "Database Table created";
+    }
 
 
     @PostMapping(

@@ -1,6 +1,7 @@
 package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.reservations.Reservations;
 import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
@@ -213,6 +214,7 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         storeAllUser(usertasks);
     }
 
+
     private void storeAllUser(Collection<User> usertasks) {
 
         Properties properties = new Properties();
@@ -234,6 +236,84 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
 
     }
+
+
+    @Override
+    public void addReservations(Reservations reservations) {
+        Collection<Reservations> reservationtasks = getAllReservation(reservations);
+        reservationtasks.add(reservations);
+        storeAllReservations(reservationtasks);
+
+    }
+
+    private void storeAllReservations(Collection<Reservations> reservationtasks) {
+        Properties properties = new Properties();
+        AtomicInteger i = new AtomicInteger(0);
+        reservationtasks.forEach(
+                reservations -> {
+                    properties.setProperty("Reservations."+ i.incrementAndGet() + ".firstName", reservations.getFirstName());
+                    properties.setProperty("Reservations."+ i.get() + ".lastName", reservations.getLastName());
+                    properties.setProperty("Reservations."+ i.get() + ".eMail", reservations.getEmail());
+                    properties.setProperty("Reservations."+ i.get() + ".phoneNumber", reservations.getPhoneNumber());
+                    properties.setProperty("Reservations."+ i.get() + ".userId",""+ reservations.getUserId());
+                    properties.setProperty("Reservations."+ i.get() + ".date", reservations.getDate());
+                    properties.setProperty("Reservations."+ i.get() + ".time", reservations.getTime());
+                    properties.setProperty("Reservations."+ i.get() + ".rSeats",""+ reservations.getrSeats());
+                    properties.setProperty("Reservations."+ i.get() + ".restaurantId",""+ reservations.getRestaurantId());
+                    properties.setProperty("Reservations."+ i.get() + ".rName", reservations.getrName());
+                    properties.setProperty("Reservations."+ i.get() + ".rZipcode",""+ reservations.getrZipcode());
+                    properties.setProperty("Reservations."+ i.get() + ".rAddress", reservations.getrAddress());
+                    properties.setProperty("Reservations."+ i.get() + ".rPhoneNumber", reservations.getrPhoneNumber());
+                    properties.setProperty("Reservations."+ i.get() + ".rEmail", reservations.getrEmail());
+                }
+        );
+        try{
+            properties.store(new FileOutputStream(fileName), "Store data to file.");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+    public Collection<Reservations> getAllReservation(Reservations reservation) {
+        List<Reservations> reservationtasks = new ArrayList<>();
+
+        Properties properties = new Properties();
+        int i = 1;
+        try {
+            properties.load(new FileInputStream(fileName));
+
+            while (properties.containsKey("Reservations." + i + ".firstName")) {
+                System.out.println("Bin in der list.");
+                reservationtasks.add(
+                        new Reservations(
+                                properties.getProperty("Reservations." + i + ".firstName"),
+                                properties.getProperty("Reservations." + i + ".lastName"),
+                                properties.getProperty("Reservations." + i + ".email"),
+                                properties.getProperty("Reservations." + i + ".phoneNumber"),
+                                Integer.parseInt(properties.getProperty("Reservations." + i + ".userIed")),
+                                properties.getProperty("Reservations." + i + ".date"),
+                                properties.getProperty("Reservations." + i + ".time"),
+                                Integer.parseInt(properties.getProperty("Reservations." + i + ".rSeats")),
+                                Integer.parseInt(properties.getProperty("Reservations." + i + ".restaurantId")),
+                                properties.getProperty("Reservations." + i + ".rName"),
+                                Integer.parseInt(properties.getProperty("Reservations." + i + ".rZipcode")),
+                                properties.getProperty("Reservations." + i + ".rAddress"),
+                                properties.getProperty("Reservations." + i + ".rPhoneNumber"),
+                                properties.getProperty("Reservations." + i + ".rEmail"))
+                );
+                i++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return reservationtasks;
+    }
+
 
 
 }

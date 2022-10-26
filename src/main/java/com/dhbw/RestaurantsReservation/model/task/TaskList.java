@@ -2,6 +2,7 @@ package com.dhbw.RestaurantsReservation.model.task;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
 import com.dhbw.RestaurantsReservation.dataManagerImpl.PostgresTaskManagerImpl;
+import com.dhbw.RestaurantsReservation.model.reservations.Reservations;
 import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.user.User;
 
@@ -10,11 +11,16 @@ import java.util.Collection;
 
 public class TaskList {
 
-	private  Restaurant restaurant;
+
+
 	private User user;
+	private  Restaurant restaurant;
+	private  Reservations reservations;
 	private Collection<Task> usertasks;
 	private Collection<User> usertask;
 	private Collection<Restaurant> restauranttask;
+
+	private Collection<Reservations> reservationtask;
 
 	public TaskList() { }
 
@@ -24,6 +30,8 @@ public class TaskList {
 	public TaskList(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
+
+	public TaskList(Reservations reservations) {this.reservations =reservations;}
 
 
 	public User getUser() {
@@ -43,7 +51,12 @@ public class TaskList {
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
-	public Collection <Restaurant> getRTasks(){return restauranttask;}
+	public Collection <Restaurant> getRestaurants(){return restauranttask;}
+
+
+	public Reservations getReservations (){return reservations;}
+	public void setReservation(Reservations reservations) {this.reservations = reservations;}
+	public Collection<Reservations> getReservation() {return reservationtask;}
 
 
 
@@ -120,4 +133,13 @@ public class TaskList {
 	}
 
 
+	public void addReservations(Reservations reservations) {
+		TaskManager reservationsManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		reservationsManager.addReservations(reservations);
+	}
+
+	public void setReservation(){
+		TaskManager reservationManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		reservationtask = reservationManager.getAllReservation(new Reservations("Firstname", "Restaurantname"));
+	}
 }

@@ -1,6 +1,7 @@
 package com.dhbw.RestaurantsReservation.dataManagerImpl;
 
 import com.dhbw.RestaurantsReservation.dataManager.TaskManager;
+import com.dhbw.RestaurantsReservation.model.reservations.Reservations;
 import com.dhbw.RestaurantsReservation.model.restaurant.Restaurant;
 import com.dhbw.RestaurantsReservation.model.user.User;
 import com.dhbw.RestaurantsReservation.model.task.Task;
@@ -362,5 +363,128 @@ public class PostgresTaskManagerImpl implements TaskManager {
         }
     }
 
+    @Override
+    public Collection<Reservations> getAllReservation(Reservations reservations) {
+        List<Reservations> reservationstask = new ArrayList<>();
+        Statement stmt = null;
+        Connection connection = null;
 
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM reservationstable");
+            while (rs.next()) {
+                reservationstask.add(
+                        new Reservations(
+                                rs.getString("firstName"),
+                                rs.getString("lastName"),
+                                rs.getString("email"),
+                                rs.getString("phoneNumber"),
+                                rs.getInt("userId"),
+                                rs.getString("date"),
+                                rs.getString("time"),
+                                rs.getInt("rSeats"),
+                                rs.getInt("restaurantId"),
+                                rs.getString("rName"),
+                                rs.getInt("rZipcode"),
+                                rs.getString("rAddress"),
+                                rs.getString("rPhoneNumber"),
+                                rs.getString("rEmail")
+                        )
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return reservationstask;
+    }
+
+    @Override
+    public void addReservations(Reservations reservation) {
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            String udapteSQL = "INSERT into reservationstable(firstName, lastName, email, phoneNumber, userId, date," +
+                    "time, rSeats, restaurantId, rName, rZipcode, rAddress, rPhoneNumber, rEmail) VALUES (" +
+                    "'" + reservation.getFirstName() + "', " +
+                    "'" + reservation.getLastName() + "', " +
+                    "'" + reservation.getEmail() + "', " +
+                    "'" + reservation.getPhoneNumber() + "', " +
+                    "'" + reservation.getUserId() + "', " +
+                    "'" + reservation.getDate() + "', " +
+                    "'" + reservation.getTime() + "', " +
+                    "'" + reservation.getrSeats() + "', " +
+                    "'" + reservation.getRestaurantId() + "', " +
+                    "'" + reservation.getrName() + "', " +
+                    "'" + reservation.getrZipcode() + "', " +
+                    "'" + reservation.getrAddress() + "', " +
+                    "'" + reservation.getrPhoneNumber() + "', " +
+                    "'" + reservation.getrEmail() + "')";
+
+            stmt.executeUpdate(udapteSQL);
+
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createTableReservations() {
+        Statement stmt = null;
+        Connection connection = null;
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+
+            String dropTable = "DROP TABLE IF EXISTS reservationstable";
+            stmt.executeUpdate(dropTable);
+
+            String createTable = "CREATE TABLE reservationstable(" +
+                    "id SERIAL PRIMARY KEY, " +
+                    "firstName varchar(100) NOT NULL, " +
+                    "lastName varchar(100) NOT NULL, " +
+                    "email varchar(250) NOT NULL, " +
+                    "phoneNumber varchar(20) NOT NULL, " +
+                    "userId varchar(5) NOT NULL, " +
+                    "date varchar(100) NOT NULL, " +
+                    "time varchar(100) NOT NULL, " +
+                    "rSeats varchar(100) NOT NULL, " +
+                    "restaurantId varchar(5) NOT NULL, " +
+                    "rName varchar(100) NOT NULL, " +
+                    "rZipcode varchar(100) NOT NULL, " +
+                    "rAddress varchar(250) NOT NULL, " +
+                    "rPhoneNumber varchar(20) NOT NULL, " +
+                    "rEmail varchar(250) NOT NULL)";
+            stmt.executeUpdate(createTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+
+        }
+    }
 }
