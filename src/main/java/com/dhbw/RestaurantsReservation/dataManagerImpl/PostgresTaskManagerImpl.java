@@ -252,7 +252,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
             connectionr = basicDataSource2.getConnection();
             stmtr = connectionr.createStatement();
             String udapteSQL = "INSERT into restaurant(rName, rSeats, rZipcode, rAddress," +
-                    "oHMo, oHTu, oHWe, oHTh, oHFr, oHSa, oHSu" +
+                    "oHMo, oHTu, oHWe, oHTh, oHFr, oHSa, oHSu," +
                     "rCategory, rPhone, rEmail, rPassword) VALUES (" +
                     "'" + restaurant.getrName() + "', " +
                     "'" + restaurant.getrSeats() + "', " +

@@ -121,13 +121,13 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
                                 Integer.parseInt(properties.getProperty("Restaurant."+ i +".rSeats")),
                                 Integer.parseInt(properties.getProperty("Restaurant."+ i +".rZipcode")),
                                 properties.getProperty("Restaurant."+ i +".rAddress"),
-                                properties.getProperty("Restaurant."+ i +"oHMo"),
-                                properties.getProperty("Restaurant."+ i +"oHTu"),
-                                properties.getProperty("Restaurant."+ i +"oHWe"),
-                                properties.getProperty("Restaurant."+ i +"oHTh"),
-                                properties.getProperty("Restaurant."+ i +"oHFr"),
-                                properties.getProperty("Restaurant."+ i +"oHSa"),
-                                properties.getProperty("Restaurant."+ i +"oHSu"),
+                                properties.getProperty("Restaurant."+ i +".oHMo"),
+                                properties.getProperty("Restaurant."+ i +".oHTu"),
+                                properties.getProperty("Restaurant."+ i +".oHWe"),
+                                properties.getProperty("Restaurant."+ i +".oHTh"),
+                                properties.getProperty("Restaurant."+ i +".oHFr"),
+                                properties.getProperty("Restaurant."+ i +".oHSa"),
+                                properties.getProperty("Restaurant."+ i +".oHSu"),
                                 properties.getProperty("Restaurant."+ i +".rCategory"),
                                 Integer.parseInt(properties.getProperty("Restaurant."+ i +".rPhone")),
                                 properties.getProperty("Restaurant."+ i +".rEmail"),
@@ -165,13 +165,13 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
                     properties.setProperty("Restaurant."+ i.get() + ".rSeats",""+ restaurant.getrSeats());
                     properties.setProperty("Restaurant."+ i.get() + ".rZipcode",""+ restaurant.getrZipcode());
                     properties.setProperty("Restaurant."+ i.get() + ".rAddress", restaurant.getrAddress());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHMo", restaurant.getoHMo());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHTu", restaurant.getoHTu());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHWe", restaurant.getoHWe());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHTh", restaurant.getoHTh());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHFr", restaurant.getoHFr());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHSa", restaurant.getoHSa());
-                    properties.setProperty("Restaurant."+ i.get() + ".roHSu", restaurant.getoHSu());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHMo", restaurant.getoHMo());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHTu", restaurant.getoHTu());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHWe", restaurant.getoHWe());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHTh", restaurant.getoHTh());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHFr", restaurant.getoHFr());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHSa", restaurant.getoHSa());
+                    properties.setProperty("Restaurant."+ i.get() + ".oHSu", restaurant.getoHSu());
                     properties.setProperty("Restaurant."+ i.get() + ".rCategory", restaurant.getrCategory());
                     properties.setProperty("Restaurant."+ i.get() + ".rPhone",""+ restaurant.getrPhone());
                     properties.setProperty("Restaurant."+ i.get() + ".rEmail", restaurant.getrEmail());
