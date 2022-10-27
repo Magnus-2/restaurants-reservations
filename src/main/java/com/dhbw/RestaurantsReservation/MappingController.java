@@ -127,6 +127,7 @@ public class MappingController {
 
         TaskList taskList = new TaskList(
                 new Restaurant(rName, 9, 99999, "Addresse",
+                        "00:00","00:00","00:00","00:00","00:00","00:00","00:00",
                         "Category",123456789, "E@mail","Password")
         );
 
@@ -144,6 +145,7 @@ public class MappingController {
 
         TaskList restaurantList = new TaskList(
                 new Restaurant("Name", 9, 99999, "Addresse",
+                        "00:00","00:00","00:00","00:00","00:00","00:00","00:00",
                         "Category",123456789, "E@mail","Password")
         );
         restaurantList.addRestaurant(restaurant);

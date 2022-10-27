@@ -170,6 +170,13 @@ public class PostgresTaskManagerImpl implements TaskManager {
                     "rSeats int NOT NULL, " +
                     "rZipcode int NOT NULL, " +
                     "rAddress varchar(250) NOT NULL, " +
+                    "oHMo varchar(10) NOT NULL, " +
+                    "oHTu varchar(10) NOT NULL, " +
+                    "oHWe varchar(10) NOT NULL, " +
+                    "oHTh varchar(10) NOT NULL, " +
+                    "oHFr varchar(10) NOT NULL, " +
+                    "oHSa varchar(10) NOT NULL, " +
+                    "oHSu varchar(10) NOT NULL, " +
                     "rCategory varchar(250) NOT NULL, " +
                     "rPhone int NOT NULL, " +
                     "rEmail varchar(250) NOT NULL, " +
@@ -207,6 +214,13 @@ public class PostgresTaskManagerImpl implements TaskManager {
                                 rsr.getInt("rSeats"),
                                 rsr.getInt("rZipcode"),
                                 rsr.getString("rAddress"),
+                                rsr.getString("oHMo"),
+                                rsr.getString("oHTu"),
+                                rsr.getString("oHWe"),
+                                rsr.getString("oHTh"),
+                                rsr.getString("oHFr"),
+                                rsr.getString("oHSa"),
+                                rsr.getString("oHSu"),
                                 rsr.getString("rCategory"),
                                 rsr.getInt("rPhone"),
                                 rsr.getString("rEmail"),
@@ -237,11 +251,20 @@ public class PostgresTaskManagerImpl implements TaskManager {
         try {
             connectionr = basicDataSource2.getConnection();
             stmtr = connectionr.createStatement();
-            String udapteSQL = "INSERT into restaurant(rName, rSeats, rZipcode, rAddress,rCategory, rPhone, rEmail, rPassword) VALUES (" +
+            String udapteSQL = "INSERT into restaurant(rName, rSeats, rZipcode, rAddress," +
+                    "oHMo, oHTu, oHWe, oHTh, oHFr, oHSa, oHSu" +
+                    "rCategory, rPhone, rEmail, rPassword) VALUES (" +
                     "'" + restaurant.getrName() + "', " +
                     "'" + restaurant.getrSeats() + "', " +
                     "'" + restaurant.getrZipcode() + "', " +
                     "'" + restaurant.getrAddress() + "', " +
+                    "'" + restaurant.getoHMo() + "', " +
+                    "'" + restaurant.getoHTu() + "', " +
+                    "'" + restaurant.getoHWe() + "', " +
+                    "'" + restaurant.getoHTh() + "', " +
+                    "'" + restaurant.getoHFr() + "', " +
+                    "'" + restaurant.getoHSa() + "', " +
+                    "'" + restaurant.getoHSu() + "', " +
                     "'" + restaurant.getrCategory() + "', " +
                     "'" + restaurant.getrPhone() + "', " +
                     "'" + restaurant.getrEmail() + "', " +
