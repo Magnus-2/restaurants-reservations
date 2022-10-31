@@ -298,6 +298,9 @@ public class PostgresTaskManagerImpl implements TaskManager {
             String dropTable = "DROP TABLE IF EXISTS usertable";
             stmtu.executeUpdate(dropTable);
 
+            String tableEncryption = "CREATE EXTENSION pgcrypto";
+            stmtu.executeUpdate(tableEncryption);
+
             String createTable = "CREATE TABLE usertable(" +
                     "id SERIAL PRIMARY KEY, " +
                     "firstName varchar(100) NOT NULL, " +
@@ -384,6 +387,34 @@ public class PostgresTaskManagerImpl implements TaskManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean loginUser(User user) {
+        Statement stmt = null;
+        Connection connection = null;
+
+        try {
+            connection = basicDataSource.getConnection();
+            stmt = connection.createStatement();
+            String udapteSQL = "INSERT into usertable( email, password) VALUES (" +
+                    "'" + user.getEMail() + "', crypt(" +
+                    "'" + user.getPassword() + "',gen_salt('md5')))";
+
+            stmt.executeUpdate(udapteSQL);
+
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override

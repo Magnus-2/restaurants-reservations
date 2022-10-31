@@ -132,6 +132,12 @@ public class TaskList {
 		usertask = userManager.getAllUsers(new User("email", "password"));
 	}
 
+	public void loginUser(User user) {
+		// Get oder Post methode ab hier verwenden aber eher get da wir ja die Daten vom User ausgeben wollen
+		TaskManager userManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
+		userManager.addUser(user);
+	}
+
 
 	public void addReservations(Reservations reservations) {
 		TaskManager reservationsManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
@@ -142,4 +148,6 @@ public class TaskList {
 		TaskManager reservationManager = PostgresTaskManagerImpl.getPostgresTaskManagerImpl();
 		reservationtask = reservationManager.getAllReservation(new Reservations("Firstname", "Restaurantname"));
 	}
+
+
 }

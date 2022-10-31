@@ -62,6 +62,8 @@ public class MappingController {
     }
 
 
+
+
     @PostMapping(
             path = "/task/createtable/User"
     )
@@ -103,6 +105,20 @@ public class MappingController {
                         "phoneNumber","password")
         );
         userList.addUser(user);
+        return user;
+    }
+
+    @PostMapping(
+            path = "/User/anmeldung",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public User loginUser(@RequestBody User user) {
+
+        TaskList userList = new TaskList(
+                new User("email", "password")
+        );
+        userList.loginUser(user);
         return user;
     }
 

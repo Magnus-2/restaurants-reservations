@@ -20,6 +20,7 @@ public interface TaskManager {
 
     Collection<User> getAllUsers(User user);
     void addUser(User user);
+    boolean loginUser(User user);
 
 
     Collection<Reservations> getAllReservation(Reservations reservations);
