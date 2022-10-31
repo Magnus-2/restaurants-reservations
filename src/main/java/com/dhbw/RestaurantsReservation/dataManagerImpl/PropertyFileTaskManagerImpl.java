@@ -228,6 +228,14 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
         storeAllUser(usertasks);
     }
 
+    @Override
+    public boolean loginUser(User user) {
+        Collection<User> usertasks = getAllUsers(user);
+        usertasks.add(user);
+        storeAllUser(usertasks);
+        return false;
+    }
+
 
     private void storeAllUser(Collection<User> usertasks) {
 
