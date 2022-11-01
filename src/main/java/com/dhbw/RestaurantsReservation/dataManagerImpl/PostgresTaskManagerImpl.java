@@ -391,17 +391,18 @@ public class PostgresTaskManagerImpl implements TaskManager {
 
     @Override
     public boolean loginUser(User user) {
+        boolean check = false;
         Statement stmt = null;
         Connection connection = null;
 
         try {
             connection = basicDataSource.getConnection();
             stmt = connection.createStatement();
-            String udapteSQL = "INSERT into usertable( email, password) VALUES (" +
-                    "'" + user.getEMail() + "', crypt(" +
-                    "'" + user.getPassword() + "',gen_salt('md5')))";
+            ResultSet rs = stmt.executeQuery("SELECT CASE WHEN email ='" + user.getEMail() + "' AND password='" + user.getPassword() + "' THEN '" + user.setCheck2("true") + "' ELSE '" +  user.setCheck2("false")  + "'  END AS CHECK FROM usertable;");
+            while (rs.next()) {
+                check = rs.getBoolean("Check");
 
-            stmt.executeUpdate(udapteSQL);
+            }
 
             stmt.close();
             connection.close();
@@ -414,7 +415,7 @@ public class PostgresTaskManagerImpl implements TaskManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return check;
     }
 
     @Override

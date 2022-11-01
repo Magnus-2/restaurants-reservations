@@ -8,7 +8,7 @@ public class User {
     // UserManager schreiben
     // TaskManager anpassen, so dass er den Student auch nutzt
     //
-
+    private boolean check = false;
     private String firstName;
     private String lastName;
     private String email;
@@ -20,7 +20,9 @@ public class User {
     public User(){
 
     }
-
+    public User(boolean check){
+            this.check = check;
+    }
 
 
     public User (String firstName, String lastName, String email, String phoneNumber, String password){
@@ -77,6 +79,29 @@ public class User {
         this.password = password;
     }
 
+    public boolean getCheck(){return check;}
+    public void setCheck(boolean check){this.check = check;}
+
+    public String setCheck2(String check){
+        this.check = false;
+        if(check.equals("true")){
+            this.check = true;
+            return check;
+        } else if (check.equals("false")) {
+            this.check =false;
+            return check;
+        }
+        else return "The check faild";
+    }
 
 
+    public String getCheckTrue(){
+        this.check = true;
+        return " "+ check +" ";
+    }
+
+    public String getCheckFalse(){
+        this.check = false;
+        return " "+ check +" ";
+    }
 }

@@ -223,17 +223,64 @@ public class PropertyFileTaskManagerImpl implements TaskManager {
 
     @Override
     public void addUser(User user) {
-        Collection<User> usertasks = getAllUsers(user);
+        Collection<User> usertasks = getLogin(user);
         usertasks.add(user);
         storeAllUser(usertasks);
     }
 
+    private Collection<User> getLogin(User user) {
+        List<User> userlogin = new ArrayList<>();
+
+        Properties properties = new Properties();
+        int i = 1;
+        try {
+            properties.load(new FileInputStream(fileName));
+
+            while(properties.containsKey("User."+ i +".eMail")) {
+                System.out.println("Bin in der list.");
+                userlogin.add(
+                        new User(
+                                properties.getProperty("User."+ i +".eMail"),
+                                properties.getProperty("User."+ i +".password"))
+                );
+                i++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return userlogin;
+    }
+
     @Override
     public boolean loginUser(User user) {
-        Collection<User> usertasks = getAllUsers(user);
-        usertasks.add(user);
-        storeAllUser(usertasks);
+      /*  Collection<User> userlogin = getAllUsers(user);
+        storeUser(userlogin);
+
+      */
         return false;
+
+    }
+
+    private void storeUser(Collection<User> userlogin) {
+        Properties properties = new Properties();
+        AtomicInteger i = new AtomicInteger(0);
+        userlogin.forEach(
+                user -> {
+
+                    properties.setProperty("User."+ i.get() + ".eMail", user.getEMail());
+                    properties.setProperty("User."+ i.get() + ".password", user.getPassword());
+                }
+        );
+        try{
+            properties.store(new FileOutputStream(fileName), "Store data to file.");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 
 
