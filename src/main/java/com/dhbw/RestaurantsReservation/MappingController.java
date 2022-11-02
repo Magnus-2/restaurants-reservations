@@ -254,7 +254,7 @@ public class MappingController {
                 TaskList reservationsList = new TaskList(
                         new Reservations("me", "me")
                 );
-                reservationsList.setTasks();
+                reservationsList.setReservation();
                 AtomicInteger i = new AtomicInteger(0);
                 reservationsList.getReservation().forEach(
                         reservations -> {
