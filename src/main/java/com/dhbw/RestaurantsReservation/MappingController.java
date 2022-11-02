@@ -258,12 +258,12 @@ public class MappingController {
                 AtomicInteger i = new AtomicInteger(0);
                 reservationsList.getReservation().forEach(
                         reservations -> {
-                            outText.append("Reserierung Nummer " + i.incrementAndGet() + " ist im Restaurant : ");
+                            outText.append(" Reservierung Nummer " + i.incrementAndGet() + " ist im Restaurant: ");
                             outText.append(reservations.getrName() + " am  " + reservations.getDate());
-                            outText.append(". Es wurden " + reservations.getrSeats() +" Sitzplätze Reserviert um " + reservations.getTime());
+                            outText.append(". Es wurden " + reservations.getrSeats() +" Sitzplätze Reserviert um " + reservations.getTime()+".");
                         }
                 );
-                outText.append("Thank you for unsing your servie. ");
+                outText.append(" Thank you for unsing your servie. ");
             }
             catch (Exception e){
                 outText.append("Unfortunately, we cannot reach heroku. Our REST server is not responding");
