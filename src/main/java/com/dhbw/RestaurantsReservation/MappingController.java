@@ -241,7 +241,7 @@ public class MappingController {
 
         if(alexaRO.getRequest().getType().equalsIgnoreCase("IntentRequest")
         &&
-        (alexaRO.getRequest().getIntent().getName().equalsIgnoreCase("TaskReadIntent"))
+        (alexaRO.getRequest().getIntent().getName().equalsIgnoreCase("ReservationsReadIntent"))
         )
 
         {
