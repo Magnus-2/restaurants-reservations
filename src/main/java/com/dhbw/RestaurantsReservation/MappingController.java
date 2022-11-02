@@ -229,11 +229,11 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/alexa",
+            path = "/Alexa/RR/all",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
-    public AlexaRO getTasks(@RequestBody AlexaRO alexaRO) {
+    public AlexaRO getReservation(@RequestBody AlexaRO alexaRO) {
 
         if (alexaRO.getRequest().getType().equalsIgnoreCase("LaunchRequest")){
             return prepareResponse(alexaRO, "Welcome to the R4You Reservation Organizer. ", false);
