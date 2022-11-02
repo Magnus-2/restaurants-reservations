@@ -258,8 +258,9 @@ public class MappingController {
                 AtomicInteger i = new AtomicInteger(0);
                 reservationsList.getReservation().forEach(
                         reservations -> {
-                            outText.append("Reservations number " + i.incrementAndGet() + "is:");
-                            outText.append(reservations.getDate() + " in the Restaurant " + reservations.getrName());
+                            outText.append("Reserierung Nummer " + i.incrementAndGet() + " ist im Restaurant : ");
+                            outText.append(reservations.getrName() + " am  " + reservations.getDate());
+                            outText.append(". Es wurden " + reservations.getrSeats() +" Sitzplätze Reserviert um " + reservations.getTime());
                         }
                 );
                 outText.append("Thank you for unsing your servie. ");
