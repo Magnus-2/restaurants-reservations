@@ -400,8 +400,9 @@ public class PostgresTaskManagerImpl implements TaskManager {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT CASE WHEN email ='" + user.getEMail() + "' AND password='" + user.getPassword() + "' THEN '" + user.setCheck2("true") + "' ELSE '" +  user.setCheck2("false")  + "'  END AS CHECK FROM usertable;");
             while (rs.next()) {
+                if (check == false){
                 check = rs.getBoolean("check");
-
+                 }else break;
             }
 
             stmt.close();

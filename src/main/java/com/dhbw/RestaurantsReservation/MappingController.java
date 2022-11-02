@@ -116,7 +116,7 @@ public class MappingController {
     public User loginUser(@RequestBody User user) {
 
         TaskList userList = new TaskList(
-                new User("email", "password")
+                new User("email", "password", false)
         );
         userList.loginUser(user);
         return user;
@@ -236,7 +236,7 @@ public class MappingController {
     public AlexaRO getTasks(@RequestBody AlexaRO alexaRO) {
 
         if (alexaRO.getRequest().getType().equalsIgnoreCase("LaunchRequest")){
-            return prepareResponse(alexaRO, "Welcome to the Mosbach Task Organizer. ", false);
+            return prepareResponse(alexaRO, "Welcome to the R4You Reservation Organizer. ", false);
         }
 
         if(alexaRO.getRequest().getType().equalsIgnoreCase("IntentRequest")
@@ -246,20 +246,20 @@ public class MappingController {
 
         {
             //ich weiß, jemand hat gesagt: Read all my usertasks.
-            StringBuilder outText = new StringBuilder ("Hello. You have to do the following usertasks.");
+            StringBuilder outText = new StringBuilder ("Hallo Sie haben folgende Reservierungen.");
             try {
 
 
                 //usertasks hinzufügen
-                TaskList taskList = new TaskList(
-                        new User("me", "me")
+                TaskList reservationsList = new TaskList(
+                        new Reservations("me", "me")
                 );
-                taskList.setTasks();
+                reservationsList.setTasks();
                 AtomicInteger i = new AtomicInteger(0);
-                taskList.getTasks().forEach(
-                        task -> {
-                            outText.append("Task number " + i.incrementAndGet() + "is:");
-                            outText.append(task.getName() + "and has priority " + task.getPriority());
+                reservationsList.getReservation().forEach(
+                        reservations -> {
+                            outText.append("Reservations number " + i.incrementAndGet() + "is:");
+                            outText.append(reservations.getDate() + " in the Restaurant " + reservations.getrName());
                         }
                 );
                 outText.append("Thank you for unsing your servie. ");

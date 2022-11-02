@@ -33,11 +33,14 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.password = password;
     }
-
-
     public User (String email, String password){
         this.email = email;
         this.password = password;
+    }
+    public User (String email, String password, Boolean check){
+        this.email = email;
+        this.password = password;
+        this.check = check;
     }
 
     public String getFirstName() {
