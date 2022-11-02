@@ -229,7 +229,7 @@ public class MappingController {
 
 
     @PostMapping(
-            path = "/Alexa/RR/all",
+            path = "/Alexa/UR/all",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
@@ -263,14 +263,14 @@ public class MappingController {
                             outText.append(". Es wurden " + reservations.getrSeats() +" Sitzplätze Reserviert um " + reservations.getTime()+".");
                         }
                 );
-                outText.append(" Thank you for unsing your servie. ");
+                outText.append(" Danke, dass Sie unseren Service benutzt haben. ");
             }
             catch (Exception e){
                 outText.append("Unfortunately, we cannot reach heroku. Our REST server is not responding");
             }
             return prepareResponse(alexaRO,outText.toString(),true);
         }
-            return prepareResponse(alexaRO, "We could not help you. ", true);
+            return prepareResponse(alexaRO, "Wir konnten Ihnen leider nicht weiter helfen. ", true);
 
     }
 
